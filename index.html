@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Let's Wed — Rosy · Tuscany</title>
+<title>Let's Wed — Rosy &amp; Charlotte · Tuscany</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -29,61 +29,9 @@ body {
   color: var(--text);
   font-weight: 300;
   overflow-x: hidden;
-  cursor: none;
 }
 img { display: block; width: 100%; }
 a { text-decoration: none; color: inherit }
-
-/* ══════════════════════════════════════════
-   CUSTOM CURSOR
-══════════════════════════════════════════ */
-#cursor {
-  position: fixed; top: 0; left: 0; z-index: 9999;
-  pointer-events: none;
-  mix-blend-mode: difference;
-}
-#cursor-dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: #fff;
-  position: absolute;
-  transform: translate(-50%,-50%);
-  transition: transform .15s ease, width .3s, height .3s;
-}
-#cursor-ring {
-  width: 36px; height: 36px; border-radius: 50%;
-  border: 1px solid rgba(255,255,255,.6);
-  position: absolute;
-  transform: translate(-50%,-50%);
-  transition: transform .08s linear, width .4s cubic-bezier(.76,0,.24,1), height .4s cubic-bezier(.76,0,.24,1), opacity .3s;
-}
-body.cursor-hover #cursor-dot { width: 56px; height: 56px; background: rgba(255,255,255,.15) }
-body.cursor-hover #cursor-ring { opacity: 0 }
-
-/* ══════════════════════════════════════════
-   INTRO
-══════════════════════════════════════════ */
-#intro {
-  position: fixed; inset: 0; z-index: 8000;
-  background: var(--dark);
-  display: flex; align-items: center; justify-content: center;
-  flex-direction: column;
-  transition: clip-path 1s cubic-bezier(.76,0,.24,1) 1.8s;
-  clip-path: inset(0 0 0 0);
-}
-#intro.hide { clip-path: inset(0 0 100% 0) }
-#intro-logo {
-  opacity: 0; transform: translateY(16px);
-  transition: opacity .8s ease .4s, transform .8s ease .4s;
-}
-#intro-logo img { height: 44px; filter: brightness(0) invert(1); margin: 0 auto }
-#intro-label {
-  font-size: 9px; letter-spacing: .5em; text-transform: uppercase;
-  color: rgba(255,255,255,.35); margin-top: 20px;
-  opacity: 0; transition: opacity .8s ease .7s;
-}
-#intro.reveal #intro-logo { opacity: 1; transform: translateY(0) }
-#intro.reveal #intro-label { opacity: 1 }
-#intro.done { display: none }
 
 /* ══════════════════════════════════════════
    NAV
@@ -350,29 +298,6 @@ body.cursor-hover #cursor-ring { opacity: 0 }
   font-size: 10px; align-self: center;
 }
 @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-
-/* ══════════════════════════════════════════
-   NUMBERS
-══════════════════════════════════════════ */
-#numbers {
-  display: grid; grid-template-columns: repeat(3,1fr);
-  border-bottom: 1px solid var(--border);
-}
-.nb {
-  padding: 64px 0; text-align: center;
-  border-right: 1px solid var(--border);
-}
-.nb:last-child { border-right: none }
-.nb-val {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(48px, 6vw, 72px);
-  font-weight: 300; line-height: 1; color: var(--green);
-  display: block;
-}
-.nb-label {
-  font-size: 8px; letter-spacing: .32em; text-transform: uppercase;
-  color: var(--muted); margin-top: 10px; display: block;
-}
 
 /* ══════════════════════════════════════════
    ABOUT — editorial split
@@ -749,7 +674,6 @@ img { height: auto }
 /* Touch devices: no custom cursor, no hover-only states */
 @media (hover: none), (pointer: coarse) {
   body { cursor: auto }
-  #cursor { display: none }
   .cel-arrow { color: rgba(255,255,255,.85) }
   .cel-item:hover img { transform: none }
   .serv-item:hover::before { width: 0 }
@@ -765,9 +689,6 @@ img { height: auto }
 
 /* ───────── Tablet & phone ───────── */
 @media (max-width: 900px) {
-  /* Intro: faster */
-  #intro { transition: clip-path .8s cubic-bezier(.76,0,.24,1) 0s }
-
   /* Nav */
   .nav { padding: 14px 20px; padding-top: max(14px, env(safe-area-inset-top)) }
   .nav-logo img { height: 24px }
@@ -792,7 +713,7 @@ img { height: auto }
 
   /* Readability: tiny tracking labels bumped up */
   .label, .st-attr, .test-author, #cta .eyebrow { font-size: 10px; letter-spacing: .3em }
-  .nb-label, .cel-type, .cel-arrow { font-size: 9.5px; letter-spacing: .2em }
+.cel-type, .cel-arrow { font-size: 9.5px; letter-spacing: .2em }
   .btn-text, .btn-fill, .btn-outline, .btn-outline-w, .f-submit { font-size: 10.5px; letter-spacing: .24em }
   .btn-fill, .btn-outline, .btn-outline-w { min-height: 50px; justify-content: center; padding: 16px 32px }
   .btn-text { padding: 10px 0 6px }
@@ -811,11 +732,6 @@ img { height: auto }
   /* Marquee */
   .marquee-wrap { padding: 16px 0 }
   .marquee-track span { font-size: 16px; padding: 0 22px }
-
-  /* Numbers */
-  .nb { padding: 40px 6px }
-  .nb-val { font-size: clamp(36px, 11vw, 56px) }
-  .nb-label { letter-spacing: .14em; line-height: 1.5; padding: 0 4px }
 
   /* About */
   #about { grid-template-columns: 1fr; min-height: 0 }
@@ -936,33 +852,311 @@ img { height: auto }
 /* ───────── Small phones ───────── */
 @media (max-width: 380px) {
   #hero-title { font-size: 40px }
-  .nb-label { font-size: 8.5px; letter-spacing: .1em }
   .cel-couple { font-size: 18px }
 }
 
+/* ══════════════════════════════════════════
+   QUADRIFOGLIO CURSOR (native, zero-lag)
+══════════════════════════════════════════ */
+:root { --clover: #A9C77F; --gold: #C9A882 }
+html, body {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cg fill='%2397B86A' stroke='%23fff' stroke-width='1'%3E%3Ccircle cx='9.5' cy='9.5' r='6'/%3E%3Ccircle cx='20.5' cy='9.5' r='6'/%3E%3Ccircle cx='9.5' cy='20.5' r='6'/%3E%3Ccircle cx='20.5' cy='20.5' r='6'/%3E%3C/g%3E%3Cpath d='M17 26 q2 3 0 4' stroke='%2397B86A' stroke-width='1.4' fill='none'/%3E%3C/svg%3E") 15 15, auto;
+}
+a, button, [onclick], .cel-item, .serv-item, .burger, .ig-item, .folder, .lb-btn, label, select, .wa-fab {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg transform='rotate(45 16 16)' fill='%234E6E43' stroke='%23fff' stroke-width='1'%3E%3Ccircle cx='10.5' cy='10.5' r='6.4'/%3E%3Ccircle cx='21.5' cy='10.5' r='6.4'/%3E%3Ccircle cx='10.5' cy='21.5' r='6.4'/%3E%3Ccircle cx='21.5' cy='21.5' r='6.4'/%3E%3C/g%3E%3C/svg%3E") 16 16, pointer;
+}
+input, textarea { cursor: text }
+
+/* ══════════════════════════════════════════
+   INTRO — quadrifoglio → anello → dito
+══════════════════════════════════════════ */
+#intro {
+  position: fixed; inset: 0; z-index: 8000;
+  background: var(--bg);
+  overflow: hidden; touch-action: none;
+  --hx: 50%; --hy: 50%; --hr: 0px;
+  -webkit-mask-image: radial-gradient(circle at var(--hx) var(--hy), transparent var(--hr), #000 calc(var(--hr) + 1px));
+          mask-image: radial-gradient(circle at var(--hx) var(--hy), transparent var(--hr), #000 calc(var(--hr) + 1px));
+}
+#intro.done { display: none }
+#intro svg { position: absolute; inset: 0; width: 100%; height: 100% }
+#intro .hand-line { fill: var(--bg); stroke: #2b2925; stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round }
+#intro .hand-detail { fill: none; stroke: #2b2925; stroke-width: 1.1; stroke-linecap: round; opacity: .55 }
+.intro-top, .intro-hint {
+  position: absolute; left: 0; right: 0; text-align: center; pointer-events: none;
+  font-size: 9px; letter-spacing: .5em; text-transform: uppercase; color: var(--muted);
+  transition: opacity .6s;
+}
+.intro-top { top: 40px }
+.intro-top img { height: 26px; width: auto; margin: 0 auto 14px }
+.intro-hint { bottom: 44px; display: flex; flex-direction: column; align-items: center; gap: 12px }
+.intro-hint i { width: 1px; height: 42px; background: rgba(13,12,11,.25); animation: scrollbounce 2.4s ease-in-out infinite }
+.intro-words {
+  position: absolute; left: 7%; top: 46%; max-width: 30%; text-align: left; line-height: 1.15; pointer-events: none;
+  font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
+  font-size: clamp(30px, 4.2vw, 58px); color: var(--text); opacity: 0;
+  transform: translateY(14px); transition: opacity .8s, transform .8s;
+}
+.intro-words.on { opacity: 1; transform: none }
+.intro-skip {
+  position: absolute; top: 34px; right: 40px; z-index: 2;
+  font-size: 9px; letter-spacing: .32em; text-transform: uppercase; color: var(--muted);
+  background: none; border: 0; border-bottom: 1px solid rgba(13,12,11,.2); padding: 4px 0; font-family: 'Jost', sans-serif;
+}
+
+/* ══════════════════════════════════════════
+   SPACING — respiro tra hero e sezioni
+══════════════════════════════════════════ */
+.hero-gap { height: clamp(80px, 10vw, 150px) }
+.sec-head { text-align: center; max-width: 720px; margin: 0 auto 56px; padding: 0 24px }
+.sec-head h2, .h-serif {
+  font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic;
+  font-size: clamp(32px, 3.8vw, 50px); line-height: 1.15;
+}
+.sec-head p { font-size: 13.5px; line-height: 2.05; color: var(--muted); margin-top: 20px }
+.page-end { height: clamp(80px, 9vw, 130px) }
+
+/* ══════════════════════════════════════════
+   SPLIT (foto | testo)
+══════════════════════════════════════════ */
+.split {
+  display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+  gap: clamp(40px, 6vw, 110px); padding: 0 clamp(24px, 6vw, 96px);
+  max-width: 1360px; margin: 0 auto;
+}
+.split + .split { margin-top: clamp(90px, 10vw, 150px) }
+.split .s-img { aspect-ratio: 4/5; overflow: hidden; position: relative }
+.split .s-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover }
+.split.rev .s-img { order: 2 }
+.split .s-copy { max-width: 520px }
+.split.rev .s-copy { justify-self: end }
+.split h1, .split h2 {
+  font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic;
+  font-size: clamp(38px, 4.4vw, 64px); line-height: 1.05; margin-bottom: 14px; letter-spacing: -.01em;
+}
+.split .s-meta { font-size: 9px; letter-spacing: .34em; text-transform: uppercase; color: var(--warm); display: block; margin-bottom: 30px }
+.split p { font-size: 13.5px; line-height: 2.1; color: var(--muted); margin-bottom: 18px }
+
+/* Qualities (3 per persona) */
+.qualities {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--border); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  max-width: 1360px; margin: clamp(56px, 6vw, 90px) auto 0;
+}
+.qualities > div { background: var(--white); padding: 56px 48px }
+.qualities .q-n { font-family: 'Cormorant Garamond', serif; font-size: 40px; color: var(--warm); opacity: .5; display: block; margin-bottom: 20px }
+.qualities h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 22px; margin-bottom: 12px }
+.qualities p { font-size: 12.5px; line-height: 2; color: var(--muted) }
+.placeholder { background: repeating-linear-gradient(45deg, rgba(201,168,130,.10) 0 10px, transparent 10px 20px); outline: 1px dashed rgba(201,168,130,.7); outline-offset: 4px }
+.ph-tag { display: inline-block; font-size: 8px; letter-spacing: .25em; text-transform: uppercase; color: #9a7444; background: rgba(201,168,130,.2); padding: 3px 8px; margin-bottom: 14px }
+
+/* ══════════════════════════════════════════
+   INSTAGRAM GRID — 3 per riga
+══════════════════════════════════════════ */
+.ig-wrap { max-width: 1180px; margin: 0 auto; padding: 0 clamp(12px, 4vw, 48px) }
+.ig-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px }
+.ig-item { position: relative; aspect-ratio: 4/5; overflow: hidden; background: #ece9e4 }
+.ig-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(.25,.46,.45,.94), opacity .8s; opacity: 0 }
+.ig-item img.ld { opacity: 1 }
+.ig-item::after { content: ''; position: absolute; inset: 0; background: rgba(13,12,11,0); transition: background .5s }
+.ig-item:hover img { transform: scale(1.05) }
+.ig-item:hover::after { background: rgba(13,12,11,.12) }
+
+/* ══════════════════════════════════════════
+   CELEBRATE grid (7 coppie + Wezoree)
+══════════════════════════════════════════ */
+.cel-index { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; padding: 0 3px }
+.cel-index .cel-item { aspect-ratio: 2/3 }
+.cel-index .cel-item img { width: 100%; height: 100%; object-fit: cover }
+.cel-index .more-tile {
+  grid-column: span 2; background: var(--white);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; padding: 48px; text-align: center;
+}
+.more-tile .h-serif { font-size: clamp(28px, 3vw, 40px) }
+.more-tile p { font-size: 13px; color: var(--muted); line-height: 1.9; max-width: 380px }
+
+/* ══════════════════════════════════════════
+   LET'S DESIGN — cartelle
+══════════════════════════════════════════ */
+.folders { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 64px); max-width: 1180px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 48px) }
+.folder { position: relative; padding-top: 34px }
+.folder-tab {
+  position: absolute; top: 0; left: 0; height: 36px; width: 46%;
+  background: #E9E3D8; border-radius: 10px 18px 0 0;
+  display: flex; align-items: center; padding: 0 22px;
+  font-size: 8.5px; letter-spacing: .3em; text-transform: uppercase; color: #8b7b63;
+}
+.folder-tab::after { content: ''; position: absolute; right: -22px; bottom: 0; width: 40px; height: 36px; background: #E9E3D8; transform: skewX(32deg); border-top-right-radius: 10px; z-index: -1 }
+.folder-body { position: relative; background: #E9E3D8; border-radius: 0 12px 12px 12px; padding: 14px; aspect-ratio: 5/4; overflow: hidden }
+.folder-peek { position: absolute; inset: 14px; overflow: hidden; border-radius: 4px }
+.folder-peek img { position: absolute; width: 62%; height: 86%; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,.18); transition: transform 1s cubic-bezier(.76,0,.24,1) }
+.folder-peek img:nth-child(1) { left: 4%; top: 10%; transform: rotate(-6deg) }
+.folder-peek img:nth-child(2) { left: 22%; top: 4%; transform: rotate(2deg) }
+.folder-peek img:nth-child(3) { right: 2%; top: 12%; transform: rotate(7deg) }
+.folder:hover .folder-peek img:nth-child(1) { transform: rotate(-11deg) translate(-14px,-24px) }
+.folder:hover .folder-peek img:nth-child(2) { transform: rotate(0deg) translateY(-34px) }
+.folder:hover .folder-peek img:nth-child(3) { transform: rotate(12deg) translate(14px,-22px) }
+.folder-front {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 46%;
+  background: linear-gradient(to bottom, #EFE9DF, #E4DCCF); border-radius: 12px;
+  box-shadow: 0 -8px 24px rgba(0,0,0,.08);
+  display: flex; flex-direction: column; justify-content: flex-end; padding: 26px 30px;
+  transform-origin: bottom; transition: transform .9s cubic-bezier(.76,0,.24,1);
+}
+.folder:hover .folder-front { transform: perspective(900px) rotateX(-16deg) }
+.folder-front .cel-couple { color: var(--text); font-size: 28px; margin-bottom: 4px }
+.folder-front .cel-type { color: var(--muted); margin: 0 }
+.folder-front .btn-text { margin-top: 14px; width: fit-content }
+.folder.open .folder-front { transform: perspective(900px) rotateX(-28deg) }
+.design-panel { max-width: 1180px; margin: 0 auto; overflow: hidden; height: 0; transition: height .9s cubic-bezier(.76,0,.24,1) }
+.design-panel-inner { padding: 72px 0 0 }
+.design-panel .dp-head { display: flex; justify-content: space-between; align-items: flex-end; padding: 0 clamp(12px, 4vw, 48px); margin-bottom: 28px }
+.dp-close { font-size: 9px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); background: none; border: 0; font-family: 'Jost', sans-serif; border-bottom: 1px solid var(--border); padding: 6px 0 }
+
+/* ══════════════════════════════════════════
+   LET'S PARTY tiles
+══════════════════════════════════════════ */
+.party-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; padding: 0 3px }
+.party-tiles .cel-item { aspect-ratio: 3/4 }
+.party-tiles .cel-item img { width: 100%; height: 100%; object-fit: cover }
+
+/* ══════════════════════════════════════════
+   FORM richiesta incontro
+══════════════════════════════════════════ */
+.meet {
+  background: var(--white); border-top: 1px solid var(--border);
+  padding: clamp(80px, 9vw, 130px) clamp(24px, 6vw, 96px);
+  display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(40px, 6vw, 110px); align-items: start;
+}
+.meet .h-serif { font-size: clamp(36px, 4vw, 56px); margin-bottom: 22px }
+.meet .m-intro p { font-size: 13.5px; color: var(--muted); line-height: 2.05; margin-bottom: 26px; max-width: 420px }
+.meet .wa-link { display: inline-flex; align-items: center; gap: 12px; font-size: 9px; letter-spacing: .3em; text-transform: uppercase; color: var(--green); border-bottom: 1px solid rgba(78,110,67,.3); padding-bottom: 4px }
+.meet .wa-link svg { width: 15px; height: 15px; fill: var(--green) }
+.m-form .f-form-row { gap: 28px }
+.m-form .ff { margin-bottom: 22px }
+.m-form .ff input, .m-form .ff textarea, .m-form .ff select {
+  background: transparent; border: 0; border-bottom: 1px solid rgba(13,12,11,.14); padding: 11px 0;
+  font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 300; color: var(--text); outline: none; width: 100%; border-radius: 0;
+  -webkit-appearance: none; appearance: none;
+}
+.m-form .ff select { background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%); background-position: right 6px center, right 1px center; background-size: 5px 5px; background-repeat: no-repeat }
+.m-form .ff input:focus, .m-form .ff textarea:focus, .m-form .ff select:focus { border-color: var(--green) }
+.m-form .ff textarea { height: 110px; resize: none }
+.m-choice { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 26px }
+.m-choice label { position: relative }
+.m-choice input { position: absolute; opacity: 0; pointer-events: none }
+.m-choice span { display: inline-block; padding: 11px 20px; border: 1px solid rgba(13,12,11,.15); font-size: 9px; letter-spacing: .24em; text-transform: uppercase; color: var(--muted); transition: all .3s }
+.m-choice input:checked + span { background: var(--text); color: var(--bg); border-color: var(--text) }
+.m-sent { display: none; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 24px; color: var(--green); margin-top: 18px }
+.m-form.sent .m-sent { display: block }
+
+/* ══════════════════════════════════════════
+   LIGHTBOX
+══════════════════════════════════════════ */
+.lb { position: fixed; inset: 0; z-index: 9000; background: rgba(13,12,11,.96); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity .45s }
+.lb.open { opacity: 1; pointer-events: all }
+.lb img { max-width: 88vw; max-height: 86vh; width: auto; height: auto; object-fit: contain; transition: opacity .35s }
+.lb-btn { position: absolute; background: none; border: 0; color: rgba(255,255,255,.7); font-family: 'Jost', sans-serif; font-size: 10px; letter-spacing: .3em; text-transform: uppercase; padding: 18px }
+.lb-btn:hover { color: #fff }
+.lb-prev { left: 12px; top: 50%; transform: translateY(-50%); font-size: 26px; letter-spacing: 0 }
+.lb-next { right: 12px; top: 50%; transform: translateY(-50%); font-size: 26px; letter-spacing: 0 }
+.lb-close { top: 16px; right: 16px }
+.lb-count { position: absolute; bottom: 22px; left: 0; right: 0; text-align: center; color: rgba(255,255,255,.4); font-size: 9px; letter-spacing: .3em }
+
+/* Subpage hero copy alignment: tiny back link */
+.ph-back { display: inline-block; margin-bottom: 18px; font-size: 9px; letter-spacing: .3em; text-transform: uppercase; color: rgba(255,255,255,.65) }
+.ph-back:hover { color: #fff }
+
+/* ───────── Responsive for new parts ───────── */
+@media (max-width: 900px) {
+  .hero-gap { height: 72px }
+  .split { grid-template-columns: 1fr; gap: 36px; padding: 0 20px }
+  .split.rev .s-img { order: 0 }
+  .split.rev .s-copy { justify-self: start }
+  .split p { font-size: 15px; line-height: 1.85 }
+  .split .s-meta { font-size: 10px; margin-bottom: 22px }
+  .qualities { grid-template-columns: 1fr }
+  .qualities > div { padding: 40px 24px }
+  .qualities p { font-size: 14.5px; line-height: 1.8 }
+  .sec-head p { font-size: 15px; line-height: 1.85 }
+  .ig-grid { gap: 2px }
+  .ig-wrap { padding: 0 2px }
+  .cel-index { grid-template-columns: 1fr 1fr }
+  .cel-index .more-tile { grid-column: span 2; padding: 56px 24px }
+  .folders { grid-template-columns: 1fr; gap: 40px }
+  .folder-tab { width: 64%; font-size: 9px }
+  .party-tiles { grid-template-columns: 1fr }
+  .party-tiles .cel-item { aspect-ratio: 4/3 }
+  .meet { grid-template-columns: 1fr; gap: 32px; padding: 72px 20px 80px }
+  .m-form .f-form-row { grid-template-columns: 1fr; gap: 0 }
+  .m-form .ff input, .m-form .ff textarea, .m-form .ff select { font-size: 16px }
+  .m-choice span { font-size: 10px; padding: 12px 16px }
+  .intro-top { top: max(26px, env(safe-area-inset-top)) }
+  .intro-skip { top: max(24px, env(safe-area-inset-top)); right: 20px; font-size: 10px }
+  .intro-words { left: 0; right: 0; max-width: none; top: 15%; text-align: center; padding: 0 24px }
+  .lb img { max-width: 100vw; max-height: 80vh }
+  .lb-prev, .lb-next { top: auto; bottom: 8px; transform: none }
+}
+
+a.cel-item { display: block }
+.cel-index .cel-item:nth-child(1), .party-tiles .cel-item:nth-child(1) { grid-row: auto }
 </style>
 </head>
 <body>
 
-<!-- ════════ CURSOR ════════ -->
-<div id="cursor">
-  <div id="cursor-dot"></div>
-  <div id="cursor-ring"></div>
-</div>
-
-<!-- ════════ INTRO ════════ -->
-<div id="intro">
-  <div id="intro-logo">
-    <img src="logo.png" alt="Let's Wed">
-  </div>
-  <div id="intro-label">Tuscany · Italy · Since 2015</div>
+<!-- ════════ INTRO: quadrifoglio → anello → al dito della sposa ════════ -->
+<div id="intro" aria-hidden="true">
+  <div class="intro-top"><img src="logo.png" alt="Let's Wed"><span>Tuscany · Italy</span></div>
+  <button class="intro-skip" type="button" onclick="introFinish(true)">Skip</button>
+  <div class="intro-words" id="intro-words">Your story begins with a yes.</div>
+  <svg viewBox="170 290 660 720" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <linearGradient id="goldg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#E2C9A2"/><stop offset=".5" stop-color="#C9A882"/><stop offset="1" stop-color="#9F7D56"/>
+      </linearGradient>
+    </defs>
+    <!-- ring back arc when it sits BEHIND the finger -->
+    <g id="ringLow" style="display:none"><path id="rbLow" fill="none" stroke="url(#goldg)" stroke-linecap="round"/></g>
+    <!-- hand (line-art) -->
+    <g id="handWrap"><g id="hand" transform="rotate(-12 500 1000)">
+      <path class="hand-line" d="
+        M 412 1004 C 404 950 384 880 378 812 C 374 780 372 756 374 732
+        L 376 610 C 377 590 387 579 398 579 C 409 579 419 590 419 610
+        L 421 702 C 422 712 426 712 427 702
+        L 429 512 C 429 490 439 476 450 476 C 461 476 471 490 471 512
+        L 473 692 C 474 702 478 702 479 692
+        L 480 484 C 480 462 490 448 502 448 C 514 448 524 462 524 484
+        L 526 694 C 527 704 531 704 532 694
+        L 534 526 C 534 504 544 492 555 492 C 566 492 576 504 576 526
+        L 577 738 C 590 722 610 696 630 670 C 640 656 656 648 666 656 C 676 664 674 680 666 694
+        C 648 726 626 776 608 826 C 594 866 574 930 566 1004 Z"/>
+      <path class="hand-detail" d="M386 652 q12 4 24 0 M438 566 q13 4 26 0 M490 548 q13 4 26 0 M542 580 q13 4 26 0
+        M387 700 q10 3 20 0 M439 640 q12 3 24 0 M491 628 q12 3 24 0 M543 656 q12 3 24 0
+        M391 598 q7 -5 14 0 M443 494 q7 -5 14 0 M495 466 q7 -5 14 0 M548 510 q7 -5 14 0
+        M612 732 q12 4 22 -6 M652 668 q5 5 12 3 M470 760 q30 14 70 4"/>
+      <path class="hand-detail" style="opacity:.8" d="M392 936 q10 -11 20 0 q10 -11 20 0 q10 -11 20 0 q10 -11 20 0 q10 -11 20 0 q10 -11 20 0 q10 -11 20 0 q10 -11 20 0 q10 -11 20 0 M390 962 L588 962"/>
+    </g></g>
+    <!-- ring -->
+    <g id="ringG">
+      <path id="rbHigh" fill="none" stroke="url(#goldg)" stroke-linecap="round"/>
+      <path id="rf" fill="none" stroke="url(#goldg)" stroke-linecap="round"/>
+      <g id="gem"><path d="M0 -12 L9 0 L0 12 L-9 0 Z" fill="#fff" stroke="#C9A882" stroke-width="1.4"/><path d="M-9 0 L9 0 M0 -12 L0 12" stroke="#C9A882" stroke-width=".7"/></g>
+    </g>
+    <!-- clover (morphs into the ring) -->
+    <g id="clover">
+      <path id="cStem" d="M519 640 C 524 675 540 705 560 726" fill="none" stroke="#A9C77F" stroke-width="7" stroke-linecap="round"/>
+      <circle class="cl" r="38" fill="#A9C77F"/><circle class="cl" r="38" fill="#A9C77F"/>
+      <circle class="cl" r="38" fill="#A9C77F"/><circle class="cl" r="38" fill="#A9C77F"/>
+      <circle id="cOuter" r="0" fill="#A9C77F"/>
+      <circle id="cInner" r="0" fill="#F8F7F5"/>
+    </g>
+  </svg>
+  <div class="intro-hint" id="intro-hint"><span>Scroll to say yes</span><i></i></div>
 </div>
 
 <!-- ════════ NAV ════════ -->
 <nav class="nav" id="nav">
-  <div class="nav-logo" onclick="showHome()">
-    <img src="logo.png" alt="Let's Wed">
-  </div>
+  <a class="nav-logo" href="#/"><img src="logo.png" alt="Let's Wed"></a>
   <div class="burger" id="burger" onclick="toggleMenu()">
     <span class="burger-line"></span>
     <span class="burger-line"></span>
@@ -973,12 +1167,12 @@ img { height: auto }
 <div class="overlay" id="overlay">
   <div class="ol-left">
     <ul class="ol-nav">
-      <li><a onclick="showHome()"><span class="ol-num">01</span>Home</a></li>
-      <li><a onclick="goSubpage('celebrate')"><span class="ol-num">02</span>Let's Celebrate</a></li>
-      <li><a onclick="goSubpage('design')"><span class="ol-num">03</span>Let's Design</a></li>
-      <li><a onclick="goSubpage('party')"><span class="ol-num">04</span>Let's Party</a></li>
-      <li><a onclick="goSubpage('servizi')"><span class="ol-num">05</span>Servizi</a></li>
-      <li><a onclick="goSubpage('about')"><span class="ol-num">06</span>About</a></li>
+      <li><a href="#/"><span class="ol-num">01</span>Home</a></li>
+      <li><a href="#/celebrate"><span class="ol-num">02</span>Let's Celebrate</a></li>
+      <li><a href="#/design"><span class="ol-num">03</span>Let's Design</a></li>
+      <li><a href="#/party"><span class="ol-num">04</span>Let's Party</a></li>
+      <li><a href="#/servizi"><span class="ol-num">05</span>Servizi</a></li>
+      <li><a href="#/about"><span class="ol-num">06</span>About</a></li>
     </ul>
   </div>
   <div class="ol-right">
@@ -997,11 +1191,10 @@ img { height: auto }
 </div>
 
 <!-- ═════════════════════════════════════════════════════
-     MAIN — HOME (scrolling)
+     HOME
 ═════════════════════════════════════════════════════ -->
-<main id="main-home">
+<main id="main-home" class="page">
 
-  <!-- HERO -->
   <section id="hero">
     <img id="hero-bg" src="p02-1200.jpg" srcset="p02-720.jpg 720w, p02-1200.jpg 1200w, p02-1800.jpg 1800w" sizes="100vw" decoding="async" fetchpriority="high" alt="">
     <div id="hero-veil"></div>
@@ -1014,150 +1207,83 @@ img { height: auto }
         <div class="btn-outline-w" onclick="document.getElementById('celebrate').scrollIntoView({behavior:'smooth'})">Explore celebrations &ensp;→</div>
       </div>
     </div>
-    <div class="hero-scroll">
-      <span>Scroll</span>
-      <div class="hero-scroll-line"></div>
-    </div>
+    <div class="hero-scroll"><span>Scroll</span><div class="hero-scroll-line"></div></div>
   </section>
 
-  <!-- MARQUEE -->
+  <!-- MARQUEE (scritte che si muovono) -->
   <div class="marquee-wrap">
     <div class="marquee-track" id="mq">
-      <span>Let's Celebrate</span><span class="dot">◆</span>
-      <span>Let's Design</span><span class="dot">◆</span>
-      <span>Let's Party</span><span class="dot">◆</span>
-      <span>Tuscany, Italy</span><span class="dot">◆</span>
-      <span>Bespoke Ceremonies</span><span class="dot">◆</span>
-      <span>Since 2015</span><span class="dot">◆</span>
-      <span>Let's Celebrate</span><span class="dot">◆</span>
-      <span>Let's Design</span><span class="dot">◆</span>
-      <span>Let's Party</span><span class="dot">◆</span>
-      <span>Tuscany, Italy</span><span class="dot">◆</span>
-      <span>Bespoke Ceremonies</span><span class="dot">◆</span>
-      <span>Since 2015</span><span class="dot">◆</span>
+      <span>Let's Celebrate</span><span class="dot">◆</span><span>Let's Design</span><span class="dot">◆</span><span>Let's Party</span><span class="dot">◆</span><span>Tuscany, Italy</span><span class="dot">◆</span><span>Bespoke Ceremonies</span><span class="dot">◆</span><span>Since 2015</span><span class="dot">◆</span>
+      <span>Let's Celebrate</span><span class="dot">◆</span><span>Let's Design</span><span class="dot">◆</span><span>Let's Party</span><span class="dot">◆</span><span>Tuscany, Italy</span><span class="dot">◆</span><span>Bespoke Ceremonies</span><span class="dot">◆</span><span>Since 2015</span><span class="dot">◆</span>
     </div>
   </div>
 
-  <!-- NUMBERS -->
-  <div id="numbers" class="stagger">
-    <div class="nb">
-      <span class="nb-val" data-count="180">0</span>
-      <span class="nb-label">Celebrations officiated</span>
-    </div>
-    <div class="nb">
-      <span class="nb-val" data-count="28">0</span>
-      <span class="nb-label">Countries represented</span>
-    </div>
-    <div class="nb">
-      <span class="nb-val" data-count="10">0</span>
-      <span class="nb-label">Years in Tuscany</span>
-    </div>
-  </div>
+  <div class="hero-gap"></div>
 
   <!-- ABOUT SPLIT -->
   <section id="about">
     <div class="about-img-col">
       <div class="about-img-wrap" id="about-img-parallax">
-        <img src="p03-1200.jpg" srcset="p03-720.jpg 720w, p03-1200.jpg 1200w" sizes="100vw" decoding="async" loading="lazy" alt="Rosy">
+        <img src="img/about/rosy.jpg" decoding="async" loading="lazy" alt="Rosy">
       </div>
     </div>
     <div class="about-copy-col">
-      <span class="label label-green fade-up">About Rosy</span>
+      <span class="label label-green fade-up">About Rosy &amp; Charlotte</span>
       <h2 class="fade-up" style="transition-delay:.1s">Love deserves a ceremony as<br>unique as your story.</h2>
       <p class="fade-up" style="transition-delay:.2s">Rosy is a certified wedding officiant based in Tuscany, specialising in bespoke civil and symbolic ceremonies. With a background in literature, she crafts every ceremony around your unique journey.</p>
-      <p class="fade-up" style="transition-delay:.28s">From the first conversation to the final "I do," Rosy is with you — listening, writing, and celebrating.</p>
-      <div class="btn-text fade-up" style="margin-top:24px;transition-delay:.36s" onclick="goSubpage('about')">Discover Rosy's story →</div>
+      <p class="fade-up" style="transition-delay:.28s">From the first conversation to the final "I do," Rosy and Charlotte are with you — listening, writing, designing and celebrating.</p>
+      <a class="btn-text fade-up" style="margin-top:24px;transition-delay:.36s" href="#/about">Discover our story →</a>
     </div>
   </section>
 
-  <!-- STATEMENT -->
   <section id="statement">
     <div class="st-inner">
       <span class="st-mark">"</span>
-      <div class="line-wrap">
-        <blockquote class="line-inner">A ceremony is not something you attend — it is something you live. Every word, every pause, every breath belongs to you.</blockquote>
-      </div>
+      <div class="line-wrap"><blockquote class="line-inner">A ceremony is not something you attend — it is something you live. Every word, every pause, every breath belongs to you.</blockquote></div>
       <span class="st-attr fade-up">— Rosy, Let's Wed</span>
     </div>
   </section>
 
-  <!-- CELEBRATIONS GRID -->
   <section id="celebrate" style="padding:96px 64px">
     <div class="cel-header">
       <div>
         <span class="label fade-up">Real celebrations</span>
         <h2 class="fade-up" style="transition-delay:.1s">Stories worth<br>telling forever.</h2>
       </div>
-      <div class="btn-text fade-up" onclick="goSubpage('celebrate')" style="transition-delay:.2s">View all →</div>
+      <a class="btn-text fade-up" href="#/celebrate" style="transition-delay:.2s">View all →</a>
     </div>
     <div class="cel-grid">
-      <div class="cel-item img-reveal" onclick="goSubpage('celebrate')">
-        <img src="p04-1200.jpg" srcset="p04-720.jpg 720w, p04-1200.jpg 1200w, p04-1800.jpg 1800w" sizes="100vw" decoding="async" loading="lazy" alt="">
+      <a class="cel-item img-reveal" href="#/celebrate/mcintyre-colton">
+        <img src="p04-1200.jpg" decoding="async" loading="lazy" alt="">
         <div class="cel-veil"></div>
-        <div class="cel-meta">
-          <span class="cel-couple">McIntyre & Colton</span>
-          <div class="cel-type">Siena · Symbolic ceremony</div>
-          <div class="cel-arrow">Read their story →</div>
-        </div>
-      </div>
-      <div class="cel-item img-reveal" onclick="goSubpage('celebrate')" style="transition-delay:.1s">
-        <img src="p05-1200.jpg" srcset="p05-720.jpg 720w, p05-1200.jpg 1200w, p05-1800.jpg 1800w" sizes="100vw" decoding="async" loading="lazy" alt="">
+        <div class="cel-meta"><span class="cel-couple">McIntyre &amp; Colton</span><div class="cel-type">Siena · Symbolic ceremony</div><div class="cel-arrow">Read their story →</div></div>
+      </a>
+      <a class="cel-item img-reveal" href="#/celebrate/alejandra-martin" style="transition-delay:.1s">
+        <img src="p05-1200.jpg" decoding="async" loading="lazy" alt="">
         <div class="cel-veil"></div>
-        <div class="cel-meta">
-          <span class="cel-couple">Alejandra & Martin</span>
-          <div class="cel-type">Chianti · Civil ceremony</div>
-          <div class="cel-arrow">Read their story →</div>
-        </div>
-      </div>
-      <div class="cel-item img-reveal" onclick="goSubpage('celebrate')" style="transition-delay:.18s">
-        <img src="p06-1200.jpg" srcset="p06-720.jpg 720w, p06-1200.jpg 1200w, p06-1800.jpg 1800w" sizes="100vw" decoding="async" loading="lazy" alt="">
+        <div class="cel-meta"><span class="cel-couple">Alejandra &amp; Martin</span><div class="cel-type">Florence · Tuscany</div><div class="cel-arrow">Read their story →</div></div>
+      </a>
+      <a class="cel-item img-reveal" href="#/celebrate/justin-philip" style="transition-delay:.18s">
+        <img src="p06-1200.jpg" decoding="async" loading="lazy" alt="">
         <div class="cel-veil"></div>
-        <div class="cel-meta">
-          <span class="cel-couple">Justin & Philip</span>
-          <div class="cel-type">Florence · Symbolic ceremony</div>
-          <div class="cel-arrow">Read their story →</div>
-        </div>
-      </div>
-      <div class="cel-item img-reveal" onclick="goSubpage('celebrate')" style="transition-delay:.24s">
-        <img src="p07-1200.jpg" srcset="p07-720.jpg 720w, p07-1200.jpg 1200w, p07-1800.jpg 1800w" sizes="100vw" decoding="async" loading="lazy" alt="">
+        <div class="cel-meta"><span class="cel-couple">Justin &amp; Philip</span><div class="cel-type">Italian Riviera · Symbolic ceremony</div><div class="cel-arrow">Read their story →</div></div>
+      </a>
+      <a class="cel-item img-reveal" href="#/celebrate/lucy-kevin" style="transition-delay:.24s">
+        <img src="p07-1200.jpg" decoding="async" loading="lazy" alt="">
         <div class="cel-veil"></div>
-        <div class="cel-meta">
-          <span class="cel-couple">Lucy & Kevin</span>
-          <div class="cel-type">Val d'Orcia · Elopement</div>
-          <div class="cel-arrow">Read their story →</div>
-        </div>
-      </div>
+        <div class="cel-meta"><span class="cel-couple">Lucy &amp; Kevin</span><div class="cel-type">Val d'Orcia · Symbolic ceremony</div><div class="cel-arrow">Read their story →</div></div>
+      </a>
     </div>
-    <div class="cel-footer">
-      <div class="btn-outline" onclick="goSubpage('celebrate')">Let's discover more celebrations &ensp;→</div>
-    </div>
+    <div class="cel-footer"><a class="btn-outline" href="#/celebrate">Let's discover more celebrations &ensp;→</a></div>
   </section>
 
-  <!-- PARALLAX GALLERY -->
   <div id="gallery">
-    <div class="gal-item">
-      <div class="gal-inner" data-gal-parallax>
-        <img src="p08-1200.jpg" srcset="p08-720.jpg 720w, p08-1200.jpg 1200w, p08-1800.jpg 1800w" sizes="100vw" decoding="async" loading="lazy" alt="">
-      </div>
-    </div>
-    <div class="gal-item">
-      <div class="gal-inner" data-gal-parallax>
-        <img src="p09-1200.jpg" srcset="p09-720.jpg 720w, p09-1200.jpg 1200w, p09-1800.jpg 1800w" sizes="100vw" decoding="async" loading="lazy" alt="">
-      </div>
-    </div>
-    <div class="gal-item">
-      <div class="gal-inner" data-gal-parallax>
-        <img src="p10-1200.jpg" srcset="p10-720.jpg 720w, p10-1200.jpg 1200w" sizes="100vw" decoding="async" loading="lazy" alt="">
-      </div>
-    </div>
-    <div class="gal-item">
-      <div class="gal-inner" data-gal-parallax>
-        <img src="p11-1200.jpg" srcset="p11-720.jpg 720w, p11-1200.jpg 1200w, p11-1800.jpg 1800w" sizes="100vw" decoding="async" loading="lazy" alt="">
-      </div>
-    </div>
+    <div class="gal-item"><div class="gal-inner" data-gal-parallax><img src="p08-1200.jpg" decoding="async" loading="lazy" alt=""></div></div>
+    <div class="gal-item"><div class="gal-inner" data-gal-parallax><img src="p09-1200.jpg" decoding="async" loading="lazy" alt=""></div></div>
+    <div class="gal-item"><div class="gal-inner" data-gal-parallax><img src="p10-1200.jpg" decoding="async" loading="lazy" alt=""></div></div>
+    <div class="gal-item"><div class="gal-inner" data-gal-parallax><img src="p11-1200.jpg" decoding="async" loading="lazy" alt=""></div></div>
   </div>
 
-  <!-- SERVICES LIST -->
   <section id="services">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px">
       <div>
@@ -1165,56 +1291,21 @@ img { height: auto }
         <h2 class="fade-up" style="transition-delay:.1s;font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,50px);font-weight:300;font-style:italic;line-height:1.1">Four worlds<br>of celebration.</h2>
       </div>
     </div>
-    <div class="serv-list stagger">
-      <div class="serv-item" onclick="goSubpage('celebrate')">
-        <div class="serv-n">01</div>
-        <div class="serv-title">Let's Celebrate</div>
-        <div class="serv-desc">Bespoke civil & symbolic ceremonies — in English and Italian — crafted around your love story.</div>
-        <div class="serv-arrow">→</div>
-      </div>
-      <div class="serv-item" onclick="goSubpage('design')">
-        <div class="serv-n">02</div>
-        <div class="serv-title">Let's Design</div>
-        <div class="serv-desc">Custom wedding stationery suites: invitations, programs, menus, and beyond.</div>
-        <div class="serv-arrow">→</div>
-      </div>
-      <div class="serv-item" onclick="goSubpage('party')">
-        <div class="serv-n">03</div>
-        <div class="serv-title">Let's Party</div>
-        <div class="serv-desc">Garden parties, intimate dinners, pool parties — because every moment deserves to be celebrated.</div>
-        <div class="serv-arrow">→</div>
-      </div>
-      <div class="serv-item" onclick="goSubpage('about')">
-        <div class="serv-n">04</div>
-        <div class="serv-title">Let's Meet</div>
-        <div class="serv-desc">Every extraordinary ceremony begins with a conversation. Meet Rosy and start your story.</div>
-        <div class="serv-arrow">→</div>
-      </div>
-    </div>
+    <div class="serv-list stagger" id="home-serv"></div>
   </section>
 
-  <!-- TESTIMONIAL -->
   <section id="testimonial">
-    <div id="testimonial-bg">
-      <img src="p12-1200.jpg" srcset="p12-720.jpg 720w, p12-1200.jpg 1200w, p12-1800.jpg 1800w" sizes="100vw" decoding="async" loading="lazy" alt="">
-    </div>
+    <div id="testimonial-bg"><img src="p12-1200.jpg" decoding="async" loading="lazy" alt=""></div>
     <div id="testimonial-content">
       <blockquote id="tq">"Rosy didn't just officiate our ceremony — she told our story. Every guest cried, laughed, and felt exactly what we felt. It was perfect."</blockquote>
-      <div class="test-author" id="ta">Sarah & James</div>
+      <div class="test-author" id="ta">Sarah &amp; James</div>
       <div class="test-country" id="tc">United Kingdom · Villa Cetinale, Siena</div>
-      <div class="test-nav">
-        <div class="test-dot active" onclick="setTest(0)"></div>
-        <div class="test-dot" onclick="setTest(1)"></div>
-        <div class="test-dot" onclick="setTest(2)"></div>
-      </div>
+      <div class="test-nav"><div class="test-dot active" onclick="setTest(0)"></div><div class="test-dot" onclick="setTest(1)"></div><div class="test-dot" onclick="setTest(2)"></div></div>
     </div>
   </section>
 
-  <!-- WEZOREE SPLIT -->
   <section id="wezoree">
-    <div class="wz-img img-reveal">
-      <img src="p13-1200.jpg" srcset="p13-720.jpg 720w, p13-1200.jpg 1200w, p13-1800.jpg 1800w" sizes="100vw" decoding="async" loading="lazy" alt="">
-    </div>
+    <div class="wz-img img-reveal"><img src="p13-1200.jpg" decoding="async" loading="lazy" alt=""></div>
     <div class="wz-copy">
       <span class="label label-green fade-up">And many more</span>
       <h2 class="fade-up" style="transition-delay:.1s">Let's discover more<br>celebrations together.</h2>
@@ -1223,200 +1314,297 @@ img { height: auto }
     </div>
   </section>
 
-  <!-- CTA -->
   <section id="cta">
     <span class="eyebrow fade-up">Begin your story</span>
     <h2 class="fade-up" style="transition-delay:.1s">Ready to celebrate<br>your love in Tuscany?</h2>
-    <p class="fade-up" style="transition-delay:.2s">Every extraordinary ceremony begins with a simple conversation. Tell Rosy about your vision.</p>
-    <div class="btn-fill fade-up" style="transition-delay:.3s">Get in touch</div>
+    <p class="fade-up" style="transition-delay:.2s">Every extraordinary ceremony begins with a simple conversation. Tell Rosy and Charlotte about your vision.</p>
+    <a class="btn-fill fade-up" style="transition-delay:.3s" href="#/about/meet">Get in touch</a>
   </section>
-
-  <!-- FOLLOW STRIP -->
-  <div class="follow-strip">
-    <div class="fs-label">Follow our celebrations</div>
-    <div class="follow-links">
-      <a href="#" target="_blank">Instagram</a>
-      <a href="https://wezoree.com/it/vendors/profile/33927-wedding-officiants-let-s-wed/" target="_blank">Wezoree</a>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-grid">
-      <div class="f-brand">
-        <div class="f-logo"><img src="logo.png" alt="Let's Wed"></div>
-        <p>Bespoke wedding ceremonies in Tuscany and beyond. Rosy crafts ceremonies as unique as the couples she serves.</p>
-        <div class="f-soc">
-          <a href="#">Instagram</a>
-          <a href="https://wezoree.com/it/vendors/profile/33927-wedding-officiants-let-s-wed/" target="_blank">Wezoree</a>
-        </div>
-      </div>
-      <div class="f-nav">
-        <h4>Navigate</h4>
-        <ul>
-          <li><a onclick="showHome()">Home</a></li>
-          <li><a onclick="goSubpage('celebrate')">Let's Celebrate</a></li>
-          <li><a onclick="goSubpage('design')">Let's Design</a></li>
-          <li><a onclick="goSubpage('party')">Let's Party</a></li>
-          <li><a onclick="goSubpage('servizi')">Servizi</a></li>
-          <li><a onclick="goSubpage('about')">About</a></li>
-        </ul>
-      </div>
-      <div class="f-form">
-        <h4>Write to us</h4>
-        <div class="f-form-row">
-          <div class="ff"><label>Name</label><input type="text" placeholder="Your name"></div>
-          <div class="ff"><label>Email</label><input type="email" placeholder="your@email.com"></div>
-        </div>
-        <div class="ff"><label>Ceremony date</label><input type="text" placeholder="June 2026"></div>
-        <div class="ff"><label>Message</label><textarea placeholder="Tell us your story…"></textarea></div>
-        <button class="f-submit">Send →</button>
-      </div>
-    </div>
-    <div class="f-bot">
-      <span>© 2025 Let's Wed · Rosy · All rights reserved</span>
-      <span>Tuscany, Italy</span>
-    </div>
-  </footer>
-
-</main><!-- /#main-home -->
+</main>
 
 <!-- ═════════════════════════════════════════════════════
-     SUBPAGES (minimal — same engine, unique hero)
+     SUBPAGES (render da JS)
 ═════════════════════════════════════════════════════ -->
 <div id="subpages">
+  <div class="subpage page" id="sp-about"></div>
+  <div class="subpage page" id="sp-celebrate"></div>
+  <div class="subpage page" id="sp-design"></div>
+  <div class="subpage page" id="sp-party"></div>
+  <div class="subpage page" id="sp-servizi"></div>
+  <div class="subpage page" id="sp-detail"></div>
+</div>
 
-  <!-- ABOUT -->
-  <div class="subpage" id="sp-about">
-    <div class="subpage-hero">
-      <img class="ph-bg" src="p14-1200.jpg" srcset="p14-720.jpg 720w, p14-1200.jpg 1200w, p14-1800.jpg 1800w" sizes="100vw" decoding="async" loading="lazy" alt="">
-      <div class="ph-veil"></div>
-      <div class="ph-copy">
-        <span class="label" style="color:rgba(255,255,255,.5)">The officiant behind every ceremony</span>
-        <h1>Hello, I'm Rosy.</h1>
-      </div>
-    </div>
-    <section style="display:grid;grid-template-columns:1fr 1.3fr;gap:96px;padding:96px 80px;align-items:start">
-      <div style="position:sticky;top:120px;overflow:hidden">
-        <div class="img-reveal in"><img src="p03-1200.jpg" srcset="p03-720.jpg 720w, p03-1200.jpg 1200w" sizes="100vw" decoding="async" loading="lazy" alt="Rosy" style="aspect-ratio:3/4;object-fit:cover;object-position:top"></div>
-      </div>
-      <div>
-        <span class="label label-green">My story</span>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3vw,40px);font-weight:300;font-style:italic;line-height:1.35;margin-bottom:28px">I believe in ceremonies<br>that feel truly yours.</h2>
-        <p style="font-size:13px;line-height:2.15;color:var(--muted);margin-bottom:18px">I've always been drawn to the power of words. After years of studying literature and communication, I discovered my true calling: crafting the ceremony that ties the most important day of your life to who you truly are.</p>
-        <p style="font-size:13px;line-height:2.15;color:var(--muted);margin-bottom:18px">Since 2015, I've had the extraordinary privilege of officiating over 180 ceremonies across Tuscany and beyond. Each one is completely unique — because you are.</p>
-        <p style="font-size:13px;line-height:2.15;color:var(--muted);margin-bottom:18px">Whether intimate elopement in the Val d'Orcia or a grand celebration at a Chianti villa, I'm here to make it real and unforgettable.</p>
-        <div class="btn-text" onclick="goSubpage('celebrate')" style="margin-top:28px">See recent celebrations →</div>
-      </div>
-    </section>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border-top:1px solid var(--border)">
-      <div style="background:var(--white);padding:60px 52px"><span style="font-family:'Cormorant Garamond',serif;font-size:40px;color:var(--warm);opacity:.45;display:block;margin-bottom:22px">01</span><h3 style="font-family:'Cormorant Garamond',serif;font-size:21px;margin-bottom:14px">Deeply personal</h3><p style="font-size:12.5px;line-height:2;color:var(--muted)">Every ceremony begins with a real conversation. I want to know your story, your quirks, the little moments that make your love uniquely yours.</p></div>
-      <div style="background:var(--white);padding:60px 52px"><span style="font-family:'Cormorant Garamond',serif;font-size:40px;color:var(--warm);opacity:.45;display:block;margin-bottom:22px">02</span><h3 style="font-family:'Cormorant Garamond',serif;font-size:21px;margin-bottom:14px">Expertly crafted</h3><p style="font-size:12.5px;line-height:2;color:var(--muted)">With a background in literature and storytelling, I write ceremonies that are emotionally resonant, beautifully structured, and truly unforgettable.</p></div>
-      <div style="background:var(--white);padding:60px 52px"><span style="font-family:'Cormorant Garamond',serif;font-size:40px;color:var(--warm);opacity:.45;display:block;margin-bottom:22px">03</span><h3 style="font-family:'Cormorant Garamond',serif;font-size:21px;margin-bottom:14px">Fully bilingual</h3><p style="font-size:12.5px;line-height:2;color:var(--muted)">I officiate in both English and Italian, and can accommodate multilingual ceremonies for international couples and their families.</p></div>
-    </div>
-    <div class="follow-strip"><div class="fs-label">Follow our celebrations</div><div class="follow-links"><a href="#">Instagram</a><a href="https://wezoree.com/it/vendors/profile/33927-wedding-officiants-let-s-wed/" target="_blank">Wezoree</a></div></div>
-    <footer><div class="footer-grid"><div class="f-brand"><div class="f-logo"><img src="logo.png" alt=""></div><p>Bespoke wedding ceremonies in Tuscany.</p><div class="f-soc"><a href="#">Instagram</a><a href="https://wezoree.com/it/vendors/profile/33927-wedding-officiants-let-s-wed/" target="_blank">Wezoree</a></div></div><div class="f-nav"><h4>Navigate</h4><ul><li><a onclick="showHome()">Home</a></li><li><a onclick="goSubpage('celebrate')">Let's Celebrate</a></li><li><a onclick="goSubpage('design')">Let's Design</a></li><li><a onclick="goSubpage('party')">Let's Party</a></li><li><a onclick="goSubpage('servizi')">Servizi</a></li><li><a onclick="goSubpage('about')">About</a></li></ul></div><div class="f-form"><h4>Write to us</h4><div class="f-form-row"><div class="ff"><label>Name</label><input type="text" placeholder="Your name"></div><div class="ff"><label>Email</label><input type="email" placeholder="your@email.com"></div></div><div class="ff"><label>Ceremony date</label><input type="text" placeholder="June 2026"></div><div class="ff"><label>Message</label><textarea placeholder="Tell us your story…"></textarea></div><button class="f-submit">Send →</button></div></div><div class="f-bot"><span>© 2025 Let's Wed · All rights reserved</span><span>Tuscany, Italy</span></div></footer>
-  </div>
-
-  <!-- LET'S CELEBRATE -->
-  <div class="subpage" id="sp-celebrate">
-    <div class="subpage-hero">
-      <img class="ph-bg" src="p12-1200.jpg" srcset="p12-720.jpg 720w, p12-1200.jpg 1200w, p12-1800.jpg 1800w" sizes="100vw" decoding="async" loading="lazy" alt="">
-      <div class="ph-veil"></div>
-      <div class="ph-copy">
-        <span class="label" style="color:rgba(255,255,255,.5)">Every love is a world</span>
-        <h1>Let's Celebrate</h1>
-      </div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border-top:1px solid var(--border)">
-      <div style="position:relative;overflow:hidden;cursor:pointer;aspect-ratio:2/3;background:var(--bg)" class="cel-item"><img src="p15-1200.jpg" srcset="p15-720.jpg 720w, p15-1200.jpg 1200w, p15-1800.jpg 1800w" sizes="100vw" decoding="async" loading="lazy" alt=""><div class="cel-veil"></div><div class="cel-meta"><span class="cel-couple">McIntyre & Colton</span><div class="cel-type">Siena · Symbolic</div><div class="cel-arrow">Read →</div></div></div>
-      <div style="position:relative;overflow:hidden;cursor:pointer;aspect-ratio:2/3;background:var(--bg)" class="cel-item"><img src="p16-1200.jpg" srcset="p16-720.jpg 720w, p16-1200.jpg 1200w, p16-1800.jpg 1800w" sizes="100vw" decoding="async" loading="lazy" alt=""><div class="cel-veil"></div><div class="cel-meta"><span class="cel-couple">Alejandra & Martin</span><div class="cel-type">Chianti · Civil</div><div class="cel-arrow">Read →</div></div></div>
-      <div style="position:relative;overflow:hidden;cursor:pointer;aspect-ratio:2/3;background:var(--bg)" class="cel-item"><img src="p17-1200.jpg" srcset="p17-720.jpg 720w, p17-1200.jpg 1200w, p17-1800.jpg 1800w" sizes="100vw" decoding="async" loading="lazy" alt=""><div class="cel-veil"></div><div class="cel-meta"><span class="cel-couple">Justin & Philip</span><div class="cel-type">Florence · Symbolic</div><div class="cel-arrow">Read →</div></div></div>
-      <div style="position:relative;overflow:hidden;cursor:pointer;aspect-ratio:2/3;background:var(--bg)" class="cel-item"><img src="p18-1200.jpg" srcset="p18-720.jpg 720w, p18-1200.jpg 1200w, p18-1800.jpg 1800w" sizes="100vw" decoding="async" loading="lazy" alt=""><div class="cel-veil"></div><div class="cel-meta"><span class="cel-couple">Choe & Paul</span><div class="cel-type">Val d'Orcia · Elopement</div><div class="cel-arrow">Read →</div></div></div>
-      <div style="position:relative;overflow:hidden;cursor:pointer;aspect-ratio:2/3;background:var(--bg)" class="cel-item"><img src="p07-1200.jpg" srcset="p07-720.jpg 720w, p07-1200.jpg 1200w, p07-1800.jpg 1800w" sizes="100vw" decoding="async" loading="lazy" alt=""><div class="cel-veil"></div><div class="cel-meta"><span class="cel-couple">Lucy & Kevin</span><div class="cel-type">Siena · Civil</div><div class="cel-arrow">Read →</div></div></div>
-      <div style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;padding:48px;background:var(--bg);aspect-ratio:2/3"><div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:var(--muted);text-align:center;line-height:1.6">And many more<br>love stories…</div><a class="btn-outline" href="https://wezoree.com/it/vendors/profile/33927-wedding-officiants-let-s-wed/" target="_blank">Wezoree →</a></div>
-    </div>
-    <div style="background:var(--bg);padding:96px 64px;text-align:center;border-top:1px solid var(--border)"><span class="label" style="justify-content:center;display:flex;color:var(--warm)">And many more</span><h3 style="font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;font-style:italic;line-height:1.35;margin-bottom:16px">Let's discover more<br>celebrations together</h3><p style="font-size:13px;color:var(--muted);line-height:1.9;max-width:440px;margin:0 auto 36px">Over 180 ceremonies officiated across Tuscany and beyond.</p><a class="btn-outline" href="https://wezoree.com/it/vendors/profile/33927-wedding-officiants-let-s-wed/" target="_blank">Let's discover more celebrations →</a></div>
-    <div class="follow-strip"><div class="fs-label">Follow our celebrations</div><div class="follow-links"><a href="#">Instagram</a><a href="https://wezoree.com/it/vendors/profile/33927-wedding-officiants-let-s-wed/" target="_blank">Wezoree</a></div></div>
-    <footer><div class="footer-grid"><div class="f-brand"><div class="f-logo"><img src="logo.png" alt=""></div><p>Bespoke wedding ceremonies in Tuscany.</p><div class="f-soc"><a href="#">Instagram</a><a href="https://wezoree.com/it/vendors/profile/33927-wedding-officiants-let-s-wed/" target="_blank">Wezoree</a></div></div><div class="f-nav"><h4>Navigate</h4><ul><li><a onclick="showHome()">Home</a></li><li><a onclick="goSubpage('celebrate')">Let's Celebrate</a></li><li><a onclick="goSubpage('design')">Let's Design</a></li><li><a onclick="goSubpage('party')">Let's Party</a></li><li><a onclick="goSubpage('servizi')">Servizi</a></li><li><a onclick="goSubpage('about')">About</a></li></ul></div><div class="f-form"><h4>Write to us</h4><div class="f-form-row"><div class="ff"><label>Name</label><input type="text" placeholder="Your name"></div><div class="ff"><label>Email</label><input type="email" placeholder="your@email.com"></div></div><div class="ff"><label>Ceremony date</label><input type="text" placeholder="June 2026"></div><div class="ff"><label>Message</label><textarea placeholder="Tell us your story…"></textarea></div><button class="f-submit">Send →</button></div></div><div class="f-bot"><span>© 2025 Let's Wed · All rights reserved</span><span>Tuscany, Italy</span></div></footer>
-  </div>
-
-  <!-- LET'S DESIGN / PARTY / SERVIZI — minimal stubs with full hero + footer -->
-  <div class="subpage" id="sp-design">
-    <div class="subpage-hero"><img class="ph-bg" src="p13-1200.jpg" srcset="p13-720.jpg 720w, p13-1200.jpg 1200w, p13-1800.jpg 1800w" sizes="100vw" decoding="async" loading="lazy" alt=""><div class="ph-veil"></div><div class="ph-copy"><span class="label" style="color:rgba(255,255,255,.5)">Wedding Stationery & Design</span><h1>Let's Design</h1></div></div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;min-height:540px"><div class="img-reveal in"><img src="p19-1200.jpg" srcset="p19-720.jpg 720w, p19-1200.jpg 1200w, p19-1800.jpg 1800w" sizes="100vw" decoding="async" loading="lazy" alt="" style="height:100%;object-fit:cover"></div><div style="padding:96px 80px;display:flex;flex-direction:column;justify-content:center;background:var(--white)"><span class="label label-green">Wedding stationery</span><h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3vw,40px);font-weight:300;font-style:italic;line-height:1.35;margin-bottom:24px">Your ceremony deserves design that speaks its language.</h2><p style="font-size:13px;line-height:2.1;color:var(--muted);margin-bottom:16px">Every wedding has a visual identity — a palette, a mood, a feeling. Rosy works with trusted designers to create bespoke stationery suites that tell your story before a single word is spoken.</p><div class="btn-text" style="margin-top:20px">Discover our design projects →</div></div></div>
-    <div class="follow-strip"><div class="fs-label">Follow our celebrations</div><div class="follow-links"><a href="#">Instagram</a><a href="https://wezoree.com/it/vendors/profile/33927-wedding-officiants-let-s-wed/" target="_blank">Wezoree</a></div></div>
-    <footer><div class="footer-grid"><div class="f-brand"><div class="f-logo"><img src="logo.png" alt=""></div><p>Bespoke wedding ceremonies in Tuscany.</p><div class="f-soc"><a href="#">Instagram</a><a href="https://wezoree.com/it/vendors/profile/33927-wedding-officiants-let-s-wed/" target="_blank">Wezoree</a></div></div><div class="f-nav"><h4>Navigate</h4><ul><li><a onclick="showHome()">Home</a></li><li><a onclick="goSubpage('celebrate')">Let's Celebrate</a></li><li><a onclick="goSubpage('design')">Let's Design</a></li><li><a onclick="goSubpage('party')">Let's Party</a></li><li><a onclick="goSubpage('servizi')">Servizi</a></li><li><a onclick="goSubpage('about')">About</a></li></ul></div><div class="f-form"><h4>Write to us</h4><div class="f-form-row"><div class="ff"><label>Name</label><input type="text" placeholder="Your name"></div><div class="ff"><label>Email</label><input type="email" placeholder="your@email.com"></div></div><div class="ff"><label>Ceremony date</label><input type="text" placeholder="June 2026"></div><div class="ff"><label>Message</label><textarea placeholder="Tell us your story…"></textarea></div><button class="f-submit">Send →</button></div></div><div class="f-bot"><span>© 2025 Let's Wed · All rights reserved</span><span>Tuscany, Italy</span></div></footer>
-  </div>
-
-  <div class="subpage" id="sp-party">
-    <div class="subpage-hero"><img class="ph-bg" src="p20-1200.jpg" srcset="p20-720.jpg 720w, p20-1200.jpg 1200w" sizes="100vw" decoding="async" loading="lazy" alt=""><div class="ph-veil"></div><div class="ph-copy"><span class="label" style="color:rgba(255,255,255,.5)">Events & Celebrations</span><h1>Let's Party</h1></div></div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border)">
-      <div style="position:relative;overflow:hidden;height:480px;border-right:1px solid var(--border)" class="cel-item"><img src="p21-1200.jpg" srcset="p21-720.jpg 720w, p21-1200.jpg 1200w, p21-1800.jpg 1800w" sizes="100vw" decoding="async" loading="lazy" alt="" style="width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.76,0,.24,1)"><div class="cel-veil"></div><div class="cel-meta"><span class="cel-couple">Garden Party</span><div class="cel-type">Intimate · Outdoor · Bespoke</div></div></div>
-      <div style="position:relative;overflow:hidden;height:480px;border-right:1px solid var(--border)" class="cel-item"><img src="p22-1200.jpg" srcset="p22-720.jpg 720w, p22-1200.jpg 1200w, p22-1800.jpg 1800w" sizes="100vw" decoding="async" loading="lazy" alt="" style="width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.76,0,.24,1)"><div class="cel-veil"></div><div class="cel-meta"><span class="cel-couple">Pizza Party</span><div class="cel-type">Convivial · Italian · Warm</div></div></div>
-      <div style="position:relative;overflow:hidden;height:480px" class="cel-item"><img src="p23-1200.jpg" srcset="p23-720.jpg 720w, p23-1200.jpg 1200w, p23-1800.jpg 1800w" sizes="100vw" decoding="async" loading="lazy" alt="" style="width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.76,0,.24,1)"><div class="cel-veil"></div><div class="cel-meta"><span class="cel-couple">Pool Party</span><div class="cel-type">Elegant · Relaxed · Tuscan</div></div></div>
-    </div>
-    <div class="follow-strip"><div class="fs-label">Follow our celebrations</div><div class="follow-links"><a href="#">Instagram</a><a href="https://wezoree.com/it/vendors/profile/33927-wedding-officiants-let-s-wed/" target="_blank">Wezoree</a></div></div>
-    <footer><div class="footer-grid"><div class="f-brand"><div class="f-logo"><img src="logo.png" alt=""></div><p>Bespoke wedding ceremonies in Tuscany.</p><div class="f-soc"><a href="#">Instagram</a><a href="https://wezoree.com/it/vendors/profile/33927-wedding-officiants-let-s-wed/" target="_blank">Wezoree</a></div></div><div class="f-nav"><h4>Navigate</h4><ul><li><a onclick="showHome()">Home</a></li><li><a onclick="goSubpage('celebrate')">Let's Celebrate</a></li><li><a onclick="goSubpage('design')">Let's Design</a></li><li><a onclick="goSubpage('party')">Let's Party</a></li><li><a onclick="goSubpage('servizi')">Servizi</a></li><li><a onclick="goSubpage('about')">About</a></li></ul></div><div class="f-form"><h4>Write to us</h4><div class="f-form-row"><div class="ff"><label>Name</label><input type="text" placeholder="Your name"></div><div class="ff"><label>Email</label><input type="email" placeholder="your@email.com"></div></div><div class="ff"><label>Ceremony date</label><input type="text" placeholder="June 2026"></div><div class="ff"><label>Message</label><textarea placeholder="Tell us your story…"></textarea></div><button class="f-submit">Send →</button></div></div><div class="f-bot"><span>© 2025 Let's Wed · All rights reserved</span><span>Tuscany, Italy</span></div></footer>
-  </div>
-
-  <div class="subpage" id="sp-servizi">
-    <div class="subpage-hero"><img class="ph-bg" src="p24-1200.jpg" srcset="p24-720.jpg 720w, p24-1200.jpg 1200w, p24-1800.jpg 1800w" sizes="100vw" decoding="async" loading="lazy" alt=""><div class="ph-veil"></div><div class="ph-copy"><span class="label" style="color:rgba(255,255,255,.5)">Tutto quello che facciamo</span><h1>Servizi</h1></div></div>
-    <section id="services" style="padding:96px 64px;background:var(--white)"><div style="margin-bottom:56px"><span class="label label-green">Let's Wed Universe</span><h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,50px);font-weight:300;font-style:italic;line-height:1.1">One team, four worlds<br>of celebration.</h2></div><div class="serv-list"><div class="serv-item" onclick="goSubpage('celebrate')"><div class="serv-n">01</div><div class="serv-title">Let's Celebrate</div><div class="serv-desc">Bespoke civil & symbolic ceremonies in English and Italian — crafted around your love story.</div><div class="serv-arrow">→</div></div><div class="serv-item" onclick="goSubpage('design')"><div class="serv-n">02</div><div class="serv-title">Let's Design</div><div class="serv-desc">Custom wedding stationery suites: invitations, programs, menus, and beyond.</div><div class="serv-arrow">→</div></div><div class="serv-item" onclick="goSubpage('party')"><div class="serv-n">03</div><div class="serv-title">Let's Party</div><div class="serv-desc">Garden parties, intimate dinners, pool parties — because every moment deserves to be celebrated.</div><div class="serv-arrow">→</div></div><div class="serv-item" onclick="goSubpage('about')"><div class="serv-n">04</div><div class="serv-title">Let's Meet</div><div class="serv-desc">Every great ceremony begins with a conversation. Meet Rosy and start your story.</div><div class="serv-arrow">→</div></div></div></section>
-    <div class="follow-strip"><div class="fs-label">Follow our celebrations</div><div class="follow-links"><a href="#">Instagram</a><a href="https://wezoree.com/it/vendors/profile/33927-wedding-officiants-let-s-wed/" target="_blank">Wezoree</a></div></div>
-    <footer><div class="footer-grid"><div class="f-brand"><div class="f-logo"><img src="logo.png" alt=""></div><p>Bespoke wedding ceremonies in Tuscany.</p><div class="f-soc"><a href="#">Instagram</a><a href="https://wezoree.com/it/vendors/profile/33927-wedding-officiants-let-s-wed/" target="_blank">Wezoree</a></div></div><div class="f-nav"><h4>Navigate</h4><ul><li><a onclick="showHome()">Home</a></li><li><a onclick="goSubpage('celebrate')">Let's Celebrate</a></li><li><a onclick="goSubpage('design')">Let's Design</a></li><li><a onclick="goSubpage('party')">Let's Party</a></li><li><a onclick="goSubpage('servizi')">Servizi</a></li><li><a onclick="goSubpage('about')">About</a></li></ul></div><div class="f-form"><h4>Write to us</h4><div class="f-form-row"><div class="ff"><label>Name</label><input type="text" placeholder="Your name"></div><div class="ff"><label>Email</label><input type="email" placeholder="your@email.com"></div></div><div class="ff"><label>Ceremony date</label><input type="text" placeholder="June 2026"></div><div class="ff"><label>Message</label><textarea placeholder="Tell us your story…"></textarea></div><button class="f-submit">Send →</button></div></div><div class="f-bot"><span>© 2025 Let's Wed · All rights reserved</span><span>Tuscany, Italy</span></div></footer>
-  </div>
-
-</div><!-- /#subpages -->
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" onclick="if(event.target===this)lbClose()">
+  <img id="lb-img" alt="">
+  <button class="lb-btn lb-close" type="button" onclick="lbClose()">Close ✕</button>
+  <button class="lb-btn lb-prev" type="button" onclick="lbStep(-1)" aria-label="Previous">‹</button>
+  <button class="lb-btn lb-next" type="button" onclick="lbStep(1)" aria-label="Next">›</button>
+  <div class="lb-count" id="lb-count"></div>
+</div>
 
 <!-- WA FAB -->
-<div class="wa-fab"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+<a class="wa-fab" href="https://wa.me/" target="_blank" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path id="wa-path" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 
 <script>
 const isTouch = matchMedia('(hover: none), (pointer: coarse)').matches;
 const isMobile = () => window.innerWidth <= 900;
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const WEZOREE = 'https://wezoree.com/it/vendors/profile/33927-wedding-officiants-let-s-wed/';
+const WA_SVG = document.getElementById('wa-path').outerHTML;
+
 /* ════════════════════════════════
-   CUSTOM CURSOR
+   DATI — cerimonie, party, design
+   (21 foto per evento in img/<slug>/01..21.jpg, versione grande 01-l.jpg)
 ════════════════════════════════ */
-if (!isTouch) {
-const dot = document.getElementById('cursor-dot');
-const ring = document.getElementById('cursor-ring');
-let mx = 0, my = 0, rx = 0, ry = 0;
+const CEREMONIES = [
+  { slug:'mcintyre-colton', name:'McIntyre & Colton', place:'Siena countryside', type:'Symbolic ceremony', cover:'split',
+    lead:'Black tie among the cypresses.',
+    text:['An all-white ceremony on the rolling hills outside Siena: a cathedral veil, a string quartet by the pool and a long imperial table under crystal chandeliers hung between the cypresses.',
+          'Every word of their ceremony was written around the way they met and the promises they had already been keeping for years — the hills did the rest.'] },
+  { slug:'alejandra-martin', name:'Alejandra & Martin', place:'Florence · Tuscany', type:'Wedding celebration', cover:'split',
+    lead:'From a Florentine church to a villa above the city.',
+    text:['A morning of quiet preparations, a Renaissance church filled with wild greenery and a vintage roadster waiting outside. Then up to the hills, where a pergola of woven lanterns framed the long tables at sunset.',
+          'A celebration in two acts — intimate and grand at the same time — held together by family, music and the light of Florence.'] },
+  { slug:'justin-philip', name:'Justin & Philip', place:'Italian Riviera', type:'Symbolic ceremony', cover:'17',
+    lead:'Paper poppies, sea breeze and a promise.',
+    text:['Guests arrived by boat, serenaded by musicians on deck. The ceremony was held on a terrace above the sea, framed by oversized paper flowers and a riot of summer blooms.',
+          'Rosy wrote a ceremony full of laughter and tears, closed by a shower of confetti and a dinner under the bougainvillea.'] },
+  { slug:'lucy-kevin', name:'Lucy & Kevin', place:"Val d'Orcia", type:'Symbolic ceremony', cover:'split',
+    lead:'Lavender, delphiniums and endless hills.',
+    text:["A castle on the hills of the Val d'Orcia, an aisle lined with lilac delphiniums and a view that went on forever. Lucy and Kevin said their vows under a floral arch that seemed to grow out of the landscape.",
+          'Dinner under chandeliers hung from the olive trees, then a first dance in the castle cellars bathed in violet light.'] },
+  { slug:'hanna-rory', name:'Hanna & Rory', place:'Tuscany', type:'Symbolic ceremony', cover:'split',
+    lead:'A Vespa, a cedar tree and a lot of joy.',
+    text:['A garden ceremony at the foot of a centuries-old cedar wrapped in roses. The groom waited, the bride arrived on a vintage Vespa, and everybody cried before the first word was spoken.',
+          'Lemon centrepieces, wild herbs and candles: simple, generous, deeply Tuscan — just like them.'] },
+  { slug:'julianna-tim', name:'Julianna & Tim', place:'Tuscany', type:'Symbolic ceremony', cover:'split',
+    lead:'Sage silk, old-rose blooms and a yellow villa.',
+    text:['Bridesmaids in sage silk, a veil shared between sisters and a ceremony on the lawn overlooking the Tuscan hills. Every detail — from the welcome sign to the menus — was designed for them.',
+          'At sunset the long table ran through the Italian garden, dressed in deep roses and greenery, until the party moved inside.'] },
+  { slug:'mark-alex', name:'Mark & Alex', place:'Medici villa · Tuscany', type:'Symbolic ceremony', cover:'07',
+    lead:'A red door, a Medici villa and two dogs as witnesses.',
+    text:['The ceremony took place in front of the villa\'s great red door, crowned with burgundy and blush flowers, with their two dogs among the guests of honour.',
+          'Then golden hour on the terraces, round tables on the lawn under a canopy of lights and a villa glowing in the night.'] },
+];
+const PARTIES = [
+  { slug:'garden', name:'Garden Party', place:'Florence hills', type:'Intimate · Outdoor · Bespoke', cover:'04',
+    lead:'Long lunches with Florence at your feet.',
+    text:['A garden above the city, a swing band among the olive trees, a Vespa and an Ape bar, wooden stools in the meadow and a view of the Duomo from every table.',
+          'We take care of the mood, the details and the flow of the day — so you only have to enjoy it with the people you love.'] },
+  { slug:'pizza', name:'Pizza Party', place:'Tuscan borgo', type:'Convivial · Italian · Warm', cover:'10',
+    lead:'The night before: wood-fired, under the lights.',
+    text:['A medieval borgo, baskets of tomatoes at the entrance, a pizzaiolo at the oven and a gelato cart under a striped awning. The perfect welcome dinner for your guests the night before the wedding.',
+          'String lights, long tables and Tuscan sunset: informal, generous, unforgettable.'] },
+  { slug:'pool', name:'Pool Party', place:'Tuscan countryside', type:'Elegant · Relaxed · Tuscan', cover:'06',
+    lead:'Sunshine, a saxophone and the day after.',
+    text:['An infinity pool facing the hills, a live saxophone, a vintage gelato cart and inflatable rings in the water: the most joyful way to say goodbye to your guests.',
+          'Relaxed but curated — from the music to the last glass of spritz.'] },
+];
+const DESIGNS = [
+  { slug:'design-jt', name:'Julianna & Tim', type:'Menus · Welcome sign · Table design', n:10, peek:['06','02','10'] },
+  { slug:'design-mc', name:'McIntyre & Colton', type:'Menus · Seating chart · Table numbers', n:14, peek:['06','04','02'] },
+];
+const N = 21;
+const pad = n => String(n).padStart(2, '0');
+const coverOf = (e) => e.cover === 'split' ? `img/${e.slug}/split.jpg` : `img/${e.slug}/${e.cover}.jpg`;
 
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  dot.style.left = mx + 'px'; dot.style.top = my + 'px';
-});
-(function animRing() {
-  rx += (mx - rx) * .12; ry += (my - ry) * .12;
-  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-  requestAnimationFrame(animRing);
-})();
+/* ════════════════════════════════
+   TEMPLATE CONDIVISI
+════════════════════════════════ */
+const FOLLOW = `<div class="follow-strip"><div class="fs-label">Follow our celebrations</div><div class="follow-links"><a href="#" target="_blank">Instagram</a><a href="${WEZOREE}" target="_blank">Wezoree</a></div></div>`;
+const FOOTER = `<footer><div class="footer-grid"><div class="f-brand"><div class="f-logo"><img src="logo.png" alt="Let's Wed"></div><p>Bespoke wedding ceremonies in Tuscany and beyond. Rosy and Charlotte craft ceremonies as unique as the couples they serve.</p><div class="f-soc"><a href="#">Instagram</a><a href="${WEZOREE}" target="_blank">Wezoree</a></div></div><div class="f-nav"><h4>Navigate</h4><ul><li><a href="#/">Home</a></li><li><a href="#/celebrate">Let's Celebrate</a></li><li><a href="#/design">Let's Design</a></li><li><a href="#/party">Let's Party</a></li><li><a href="#/servizi">Servizi</a></li><li><a href="#/about">About</a></li></ul></div><div class="f-form"><h4>Write to us</h4><form onsubmit="return sendForm(this)"><div class="f-form-row"><div class="ff"><label>Name</label><input name="name" type="text" placeholder="Your name" required></div><div class="ff"><label>Email</label><input name="email" type="email" placeholder="your@email.com" required></div></div><div class="ff"><label>Ceremony date</label><input name="date" type="text" placeholder="June 2027"></div><div class="ff"><label>Message</label><textarea name="message" placeholder="Tell us your story…"></textarea></div><button class="f-submit">Send →</button></form></div></div><div class="f-bot"><span>© ${new Date().getFullYear()} Let's Wed · All rights reserved</span><span>Tuscany, Italy</span></div></footer>`;
+const END = FOLLOW + FOOTER;
 
-document.querySelectorAll('a,button,[onclick],.cel-item,.serv-item,.btn-text,.btn-fill,.btn-outline,.btn-outline-w,.wa-fab').forEach(el => {
-  el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-  el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-});
+function hero(img, label, title, back) {
+  return `<div class="subpage-hero"><img class="ph-bg" src="${img}" decoding="async" alt=""><div class="ph-veil"></div><div class="ph-copy">${back ? `<a class="ph-back" href="${back[0]}">← ${back[1]}</a><br>` : ''}<span class="label" style="color:rgba(255,255,255,.55)">${label}</span><h1>${title}</h1></div></div><div class="hero-gap"></div>`;
+}
+function meetForm(context, id) {
+  return `<section class="meet" id="${id || 'meet'}">
+    <div class="m-intro">
+      <span class="label label-green">Let's meet</span>
+      <h2 class="h-serif">Imagine your<br>celebration with us.</h2>
+      <p>${context ? `Loved ${context}? ` : ''}Tell us about your plans: we'd love to meet you — in Tuscany or on a video call — and start writing your story together.</p>
+      <a class="wa-link" href="https://wa.me/" target="_blank"><svg viewBox="0 0 24 24">${WA_SVG}</svg>Or write us on WhatsApp</a>
+    </div>
+    <form class="m-form" onsubmit="return sendForm(this)">
+      <div class="m-choice">
+        <label><input type="radio" name="kind" value="Meeting" checked><span>Request a meeting</span></label>
+        <label><input type="radio" name="kind" value="Video call"><span>Video call</span></label>
+        <label><input type="radio" name="kind" value="Information"><span>Just information</span></label>
+      </div>
+      <div class="f-form-row"><div class="ff"><label>Names</label><input name="name" type="text" placeholder="You & your partner" required></div><div class="ff"><label>Email</label><input name="email" type="email" placeholder="your@email.com" required></div></div>
+      <div class="f-form-row"><div class="ff"><label>Date (even approximate)</label><input name="date" type="text" placeholder="September 2027"></div><div class="ff"><label>Guests</label><select name="guests"><option value="">How many?</option><option>Up to 20</option><option>20 – 60</option><option>60 – 120</option><option>120+</option></select></div></div>
+      <div class="ff"><label>Your story</label><textarea name="message" placeholder="Where would you like to celebrate? What kind of ceremony are you dreaming of?"></textarea></div>
+      <input type="hidden" name="context" value="${context || ''}">
+      <button class="btn-fill" type="submit" style="border:0">Send request →</button>
+      <div class="m-sent">Thank you — we'll be in touch very soon.</div>
+    </form>
+  </section>`;
+}
+function igGrid(slug, n) {
+  let h = '<div class="ig-wrap"><div class="ig-grid" data-gal="' + slug + '">';
+  for (let i = 1; i <= n; i++) h += `<div class="ig-item" data-i="${i - 1}"><img src="img/${slug}/${pad(i)}.jpg" loading="lazy" decoding="async" alt="" onload="this.classList.add('ld')"></div>`;
+  return h + '</div></div>';
+}
+function celItem(href, img, name, type, arrow) {
+  return `<a class="cel-item" href="${href}"><img src="${img}" loading="lazy" decoding="async" alt=""><div class="cel-veil"></div><div class="cel-meta"><span class="cel-couple">${name}</span><div class="cel-type">${type}</div><div class="cel-arrow">${arrow || 'Read their story →'}</div></div></a>`;
 }
 
 /* ════════════════════════════════
-   INTRO
+   RENDER PAGINE
 ════════════════════════════════ */
-const intro = document.getElementById('intro');
-const T = (isMobile() || reduceMotion) ? [80, 1000, 1800] : [200, 1900, 3000];
-setTimeout(() => intro.classList.add('reveal'), T[0]);
-setTimeout(() => intro.classList.add('hide'), T[1]);
-setTimeout(() => { intro.classList.add('done'); initHeroLine(); }, T[2]);
+const QUAL = {
+  rosy: [
+    ['Deeply personal', 'Every ceremony begins with a real conversation. I want to know your story, your quirks, the little moments that make your love uniquely yours.'],
+    ['Expertly crafted', 'With a background in literature and storytelling, I write ceremonies that are emotionally resonant, beautifully structured, and truly unforgettable.'],
+    ['Fully bilingual', 'I officiate in both English and Italian, and can accommodate multilingual ceremonies for international couples and their families.'],
+  ],
+  charlotte: [
+    ['[Qualità 1 — da definire]', 'Testo segnaposto: breve descrizione della prima qualità di Charlotte (2–3 righe). Da sostituire con il testo fornito dal cliente.'],
+    ['[Qualità 2 — da definire]', 'Testo segnaposto: breve descrizione della seconda qualità di Charlotte (2–3 righe). Da sostituire con il testo fornito dal cliente.'],
+    ['[Qualità 3 — da definire]', 'Testo segnaposto: breve descrizione della terza qualità di Charlotte (2–3 righe). Da sostituire con il testo fornito dal cliente.'],
+  ],
+};
+const qualHTML = (arr, ph) => `<div class="qualities stagger">${arr.map((q, i) => `<div class="${ph ? 'placeholder' : ''}">${ph ? '<span class="ph-tag">Segnaposto</span>' : ''}<span class="q-n">${pad(i + 1)}</span><h3>${q[0]}</h3><p>${q[1]}</p></div>`).join('')}</div>`;
 
-function initHeroLine() {
-  document.querySelectorAll('.line-inner').forEach(el => {
-    el.closest('.line-wrap')?.parentElement?.classList.add('in');
+function renderStatic() {
+  document.getElementById('sp-about').innerHTML =
+    hero('img/about/hero-1920.jpg', 'The faces behind every ceremony', 'Rosy &amp; Charlotte') +
+    `<section class="split">
+       <div class="s-img img-reveal"><img src="img/about/rosy.jpg" loading="lazy" alt="Rosy"></div>
+       <div class="s-copy">
+         <span class="label label-green">Celebrant · Founder</span>
+         <h2>Hello, I'm Rosy.</h2>
+         <p>I've always been drawn to the power of words. After years of studying literature and communication, I discovered my true calling: crafting the ceremony that ties the most important day of your life to who you truly are.</p>
+         <p>Since 2015, I've had the extraordinary privilege of officiating over 180 ceremonies across Tuscany and beyond. Each one is completely unique — because you are.</p>
+         <p>Whether an intimate elopement in the Val d'Orcia or a grand celebration at a Chianti villa, I'm here to make it real and unforgettable.</p>
+       </div>
+     </section>` + qualHTML(QUAL.rosy) +
+    `<div class="hero-gap"></div>
+     <section class="split rev">
+       <div class="s-img img-reveal"><img src="img/about/charlotte.jpg" loading="lazy" alt="Charlotte"></div>
+       <div class="s-copy placeholder" style="padding:28px">
+         <span class="ph-tag">Testo segnaposto — da sostituire</span>
+         <span class="label label-green">[Ruolo di Charlotte]</span>
+         <h2>Hello, I'm Charlotte.</h2>
+         <p>[Bio di Charlotte — paragrafo 1: chi è, come è entrata in Let's Wed, cosa porta al progetto.]</p>
+         <p>[Bio di Charlotte — paragrafo 2: di cosa si occupa (es. design, coordinamento, cerimonie) e il suo approccio con le coppie.]</p>
+         <p>[Bio di Charlotte — paragrafo 3: una frase personale o un dettaglio che la racconti.]</p>
+       </div>
+     </section>` + qualHTML(QUAL.charlotte, true) +
+    `<div class="page-end"></div>` + meetForm('', 'meet-about') + END;
+
+  document.getElementById('sp-celebrate').innerHTML =
+    hero('img/alejandra-martin/hero-1920.jpg', 'Every love is a world', "Let's Celebrate") +
+    `<div class="sec-head"><span class="label">Real celebrations</span><h2>Seven love stories,<br>seven different worlds.</h2></div>` +
+    `<div class="cel-index">${CEREMONIES.map(c => celItem('#/celebrate/' + c.slug, coverOf(c), c.name, c.place + ' · ' + c.type.replace(' ceremony', ''))).join('')}
+      <div class="more-tile"><span class="label" style="color:var(--warm);margin:0">And many more</span><div class="h-serif">Let's discover more<br>celebrations together</div><p>Over 180 ceremonies officiated across Tuscany and beyond.</p><a class="btn-outline" href="${WEZOREE}" target="_blank">Wezoree →</a></div>
+    </div><div class="page-end"></div>` + END;
+
+  document.getElementById('sp-design').innerHTML =
+    hero('img/design-mc/hero-1920.jpg', 'Wedding Stationery &amp; Design', "Let's Design") +
+    `<div class="sec-head"><span class="label label-green">Wedding graphic design</span><h2>Your wedding, told<br>before a single word is spoken.</h2>
+      <p>Beyond the ceremony, Let's Wed takes care of the whole graphic identity of your wedding: invitations, welcome signs, menus, seating charts, table numbers and every printed detail. We start from your story, your palette and your venue to create a visual language that ties the whole day together.</p></div>
+     <div class="folders">${DESIGNS.map(d => `<div class="folder" data-slug="${d.slug}" onclick="openFolder('${d.slug}')"><div class="folder-tab">Project · ${d.n} pieces</div><div class="folder-body"><div class="folder-peek">${d.peek.map(p => `<img src="img/${d.slug}/${p}.jpg" loading="lazy" alt="">`).join('')}</div><div class="folder-front"><span class="cel-couple">${d.name}</span><div class="cel-type">${d.type}</div><span class="btn-text">Open the folder →</span></div></div></div>`).join('')}</div>
+     <div class="design-panel" id="design-panel"><div class="design-panel-inner" id="design-panel-inner"></div></div>
+     <div class="page-end"></div>` + meetForm('our design work', 'meet-design') + END;
+
+  document.getElementById('sp-party').innerHTML =
+    hero('img/pizza/hero-1920.jpg', 'Events &amp; Celebrations', "Let's Party") +
+    `<div class="sec-head"><span class="label">Beyond the wedding day</span><h2>Every moment deserves<br>to be celebrated.</h2></div>
+     <div class="party-tiles">${PARTIES.map(p => celItem('#/party/' + p.slug, coverOf(p), p.name, p.type, 'See the gallery →')).join('')}</div>
+     <div class="page-end"></div>` + END;
+
+  const serv = `<div class="serv-item" onclick="go('celebrate')"><div class="serv-n">01</div><div class="serv-title">Let's Celebrate</div><div class="serv-desc">Bespoke civil &amp; symbolic ceremonies — in English and Italian — crafted around your love story.</div><div class="serv-arrow">→</div></div><div class="serv-item" onclick="go('design')"><div class="serv-n">02</div><div class="serv-title">Let's Design</div><div class="serv-desc">The full graphic identity of your wedding: invitations, signage, menus and beyond.</div><div class="serv-arrow">→</div></div><div class="serv-item" onclick="go('party')"><div class="serv-n">03</div><div class="serv-title">Let's Party</div><div class="serv-desc">Garden parties, pizza nights, pool parties — because every moment deserves to be celebrated.</div><div class="serv-arrow">→</div></div><div class="serv-item" onclick="go('about')"><div class="serv-n">04</div><div class="serv-title">Let's Meet</div><div class="serv-desc">Every extraordinary ceremony begins with a conversation. Meet Rosy and Charlotte and start your story.</div><div class="serv-arrow">→</div></div>`;
+  document.getElementById('home-serv').innerHTML = serv;
+  document.getElementById('sp-servizi').innerHTML =
+    hero('img/garden/hero-1920.jpg', 'Tutto quello che facciamo', 'Servizi') +
+    `<section id="services" style="padding:0 64px 96px;background:var(--bg)"><div style="margin-bottom:56px"><span class="label label-green">Let's Wed Universe</span><h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,50px);font-weight:300;font-style:italic;line-height:1.1">One team, four worlds<br>of celebration.</h2></div><div class="serv-list">${serv}</div></section>` + END;
+
+  document.getElementById('main-home').insertAdjacentHTML('beforeend', END);
+}
+
+function renderDetail(kind, slug) {
+  const list = kind === 'party' ? PARTIES : CEREMONIES;
+  const e = list.find(x => x.slug === slug);
+  if (!e) return false;
+  const back = kind === 'party' ? ['#/party', "Let's Party"] : ['#/celebrate', "Let's Celebrate"];
+  const idx = list.indexOf(e), nxt = list[(idx + 1) % list.length];
+  document.getElementById('sp-detail').innerHTML =
+    hero(`img/${slug}/hero-1920.jpg`, e.place + ' · ' + e.type, e.name, back) +
+    `<section class="split">
+      <div class="s-img img-reveal"><img src="img/${slug}/split.jpg" alt="${e.name}"></div>
+      <div class="s-copy">
+        <span class="label label-green">${kind === 'party' ? "Let's Party" : 'Real celebration'}</span>
+        <h1>${e.name}</h1>
+        <span class="s-meta">${e.place} · ${e.type}</span>
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;line-height:1.5;color:var(--text)">${e.lead}</p>
+        ${e.text.map(t => `<p>${t}</p>`).join('')}
+      </div>
+    </section>
+    <div class="hero-gap"></div>
+    <div class="sec-head" style="margin-bottom:36px"><span class="label">The gallery</span><h2>${kind === 'party' ? 'The party' : 'Their day'} in ${N} moments</h2></div>
+    ${igGrid(slug, N)}
+    <div style="text-align:center;margin-top:56px"><a class="btn-text" href="#/${kind}/${nxt.slug}">Next: ${nxt.name} →</a></div>
+    <div class="page-end"></div>` + meetForm(e.name, 'meet-detail') + END;
+  return true;
+}
+
+/* ════════════════════════════════
+   LET'S DESIGN — apri cartella
+════════════════════════════════ */
+function openFolder(slug) {
+  const d = DESIGNS.find(x => x.slug === slug), panel = document.getElementById('design-panel'), inner = document.getElementById('design-panel-inner');
+  const already = document.querySelector('.folder.open[data-slug="' + slug + '"]');
+  document.querySelectorAll('.folder').forEach(f => f.classList.toggle('open', f.dataset.slug === slug && !already));
+  if (already) { panel.style.height = '0px'; return; }
+  inner.innerHTML = `<div class="dp-head"><div><span class="label label-green" style="margin-bottom:10px">Design project</span><div class="h-serif" style="font-size:clamp(28px,3vw,40px)">${d.name}</div></div><button class="dp-close" type="button" onclick="openFolder('${slug}')">Close ✕</button></div>` + igGrid(slug, d.n);
+  bindGalleries(inner);
+  requestAnimationFrame(() => {
+    panel.style.height = inner.scrollHeight + 'px';
+    setTimeout(() => { panel.style.height = 'auto'; panel.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 900);
+  });
+  panel.style.height = panel.offsetHeight + 'px';
+}
+
+/* ════════════════════════════════
+   LIGHTBOX
+════════════════════════════════ */
+let lbList = [], lbI = 0;
+function bindGalleries(root) {
+  (root || document).querySelectorAll('.ig-grid').forEach(g => {
+    if (g.dataset.bound) return; g.dataset.bound = 1;
+    g.addEventListener('click', ev => {
+      const it = ev.target.closest('.ig-item'); if (!it) return;
+      lbList = [...g.querySelectorAll('img')].map(im => im.getAttribute('src').replace('.jpg', '-l.jpg'));
+      lbOpen(+it.dataset.i);
+    });
   });
 }
+function lbOpen(i) { lbI = i; lbShow(); document.getElementById('lb').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function lbShow() { const im = document.getElementById('lb-img'); im.style.opacity = 0; im.onload = () => im.style.opacity = 1; im.src = lbList[lbI]; document.getElementById('lb-count').textContent = (lbI + 1) + ' / ' + lbList.length; }
+function lbStep(d) { lbI = (lbI + d + lbList.length) % lbList.length; lbShow(); }
+function lbClose() { document.getElementById('lb').classList.remove('open'); document.body.style.overflow = ''; }
+(function () {
+  const lb = document.getElementById('lb'); let sx = 0;
+  lb.addEventListener('touchstart', e => sx = e.touches[0].clientX, { passive: true });
+  lb.addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 45) lbStep(dx < 0 ? 1 : -1); }, { passive: true });
+})();
 
 /* ════════════════════════════════
-   BURGER / MENU
+   FORM (prototipo: apre l'email precompilata)
+════════════════════════════════ */
+function sendForm(f) {
+  const d = Object.fromEntries(new FormData(f).entries());
+  const body = Object.entries(d).filter(([, v]) => v).map(([k, v]) => k + ': ' + v).join('\n');
+  window.location.href = 'mailto:rosy@letswed.it?subject=' + encodeURIComponent((d.kind || 'Contact') + ' — ' + (d.name || '')) + '&body=' + encodeURIComponent(body);
+  f.classList.add('sent');
+  return false;
+}
+
+/* ════════════════════════════════
+   MENU
 ════════════════════════════════ */
 let menuOpen = false;
 function toggleMenu() {
@@ -1433,125 +1621,68 @@ function closeMenu() {
 }
 
 /* ════════════════════════════════
-   PAGE SYSTEM
+   ROUTER (#/pagina/slug)
 ════════════════════════════════ */
-function showHome() {
-  closeMenu();
-  document.getElementById('main-home').style.display = '';
-  document.getElementById('subpages').style.display = 'none';
+function go(path) { location.hash = '#/' + path; }
+function showHome() { go(''); }
+function goSubpage(id) { go(id); }
+function route() {
+  closeMenu(); lbClose();
+  const parts = location.hash.replace(/^#\/?/, '').split('/').filter(Boolean);
+  const [page, sub] = parts;
+  const home = document.getElementById('main-home'), subs = document.getElementById('subpages');
   document.querySelectorAll('.subpage').forEach(p => p.classList.remove('active'));
+  let target = null;
+  if (!page) { home.style.display = ''; subs.style.display = 'none'; }
+  else {
+    home.style.display = 'none'; subs.style.display = '';
+    if ((page === 'celebrate' || page === 'party') && sub && renderDetail(page, sub)) target = 'detail';
+    else target = document.getElementById('sp-' + page) ? page : null;
+    if (!target) { go(''); return; }
+    document.getElementById('sp-' + target).classList.add('active');
+    document.title = (target === 'detail' ? document.querySelector('#sp-detail h1').textContent + ' — ' : '') + "Let's Wed — Rosy & Charlotte · Tuscany";
+  }
   window.scrollTo({ top: 0, behavior: 'instant' });
-  registerObservers();
-  registerParallax();
-  updateNav();
+  if (page === 'about' && sub === 'meet') setTimeout(() => document.getElementById('meet-about').scrollIntoView({ behavior: 'smooth' }), 350);
+  bindGalleries(); registerObservers(); registerParallax(); updateNav();
 }
-function goSubpage(id) {
-  closeMenu();
-  document.getElementById('main-home').style.display = 'none';
-  document.getElementById('subpages').style.display = '';
-  document.querySelectorAll('.subpage').forEach(p => p.classList.remove('active'));
-  document.getElementById('sp-' + id).classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'instant' });
-  registerParallax();
-  updateNav();
-}
-document.getElementById('subpages').style.display = 'none';
+window.addEventListener('hashchange', route);
 
 /* ════════════════════════════════
-   NAVBAR
+   NAVBAR / PARALLAX / OBSERVERS
 ════════════════════════════════ */
 const nav = document.getElementById('nav');
-function updateNav() {
-  const hasHero = document.getElementById('main-home').style.display !== 'none'
-    || document.querySelector('.subpage.active .subpage-hero');
-  nav.classList.toggle('scrolled', window.scrollY > (hasHero ? window.innerHeight - 90 : 60));
-}
+function updateNav() { nav.classList.toggle('scrolled', window.scrollY > window.innerHeight * (document.getElementById('main-home').style.display !== 'none' ? 1 : .72) - 90); }
 window.addEventListener('scroll', updateNav, { passive: true });
 
-/* ════════════════════════════════
-   HERO PARALLAX
-════════════════════════════════ */
 const heroBg = document.getElementById('hero-bg');
-
-/* Gallery + about parallax */
 let parallaxTargets = [];
 function registerParallax() {
   parallaxTargets = [];
   if (isMobile() || reduceMotion) return;
-  // hero
-  if (heroBg && document.getElementById('main-home').style.display !== 'none') {
-    parallaxTargets.push({ el: heroBg, factor: 0.32, type: 'hero' });
+  if (document.getElementById('main-home').style.display !== 'none') {
+    parallaxTargets.push({ el: heroBg, factor: .32, type: 'hero' });
+    document.querySelectorAll('[data-gal-parallax]').forEach(el => parallaxTargets.push({ el, factor: .22, type: 'section' }));
+    const aip = document.getElementById('about-img-parallax'); if (aip) parallaxTargets.push({ el: aip, factor: .18, type: 'section' });
   }
-  // gallery items
-  document.querySelectorAll('[data-gal-parallax]').forEach(el => {
-    parallaxTargets.push({ el, factor: 0.22, type: 'section' });
-  });
-  // about image
-  const aip = document.getElementById('about-img-parallax');
-  if (aip) parallaxTargets.push({ el: aip, factor: 0.18, type: 'section' });
-  // subpage heroes
-  document.querySelectorAll('.subpage.active .ph-bg').forEach(el => {
-    parallaxTargets.push({ el, factor: 0.28, type: 'hero' });
-  });
+  document.querySelectorAll('.subpage.active .ph-bg').forEach(el => parallaxTargets.push({ el, factor: .28, type: 'hero' }));
 }
 function onScroll() {
   const sy = window.scrollY;
   parallaxTargets.forEach(({ el, factor, type }) => {
-    if (type === 'hero') {
-      el.style.transform = `translateY(${sy * factor}px)`;
-    } else {
-      const rect = el.closest('[data-gal-parallax]')?.parentElement?.getBoundingClientRect()
-        || el.parentElement?.getBoundingClientRect();
-      if (!rect) return;
-      if (rect.bottom < 0 || rect.top > window.innerHeight) return;
-      const offset = (sy - (sy + rect.top - window.innerHeight / 2));
-      el.style.transform = `translateY(${offset * factor}px)`;
-    }
+    if (type === 'hero') { el.style.transform = `translateY(${sy * factor}px)`; return; }
+    const rect = el.parentElement.getBoundingClientRect();
+    if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+    el.style.transform = `translateY(${(window.innerHeight / 2 - rect.top) * factor}px)`;
   });
 }
 window.addEventListener('scroll', onScroll, { passive: true });
-registerParallax();
 
-/* ════════════════════════════════
-   INTERSECTION OBSERVER — animations
-════════════════════════════════ */
 let observer;
 function registerObservers() {
   if (observer) observer.disconnect();
-  observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-        // count-up for numbers
-        const vals = entry.target.querySelectorAll('[data-count]');
-        vals.forEach(el => countUp(el));
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-
-  document.querySelectorAll('.fade-up, .img-reveal, .stagger, .line-wrap').forEach(el => {
-    // skip if already in
-    if (!el.classList.contains('in')) observer.observe(el);
-  });
-}
-registerObservers();
-
-/* ════════════════════════════════
-   COUNT-UP
-════════════════════════════════ */
-function countUp(el) {
-  const target = parseInt(el.dataset.count);
-  const suffix = el.dataset.count > 9 ? '+' : '+';
-  const duration = 1800;
-  const start = performance.now();
-  function step(now) {
-    const progress = Math.min((now - start) / duration, 1);
-    const ease = 1 - Math.pow(1 - progress, 3);
-    el.textContent = Math.floor(ease * target) + (progress < 1 ? '' : suffix);
-    if (progress < 1) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
+  observer = new IntersectionObserver(entries => entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); observer.unobserve(en.target); } }), { threshold: .12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.fade-up, .img-reveal, .stagger, .line-wrap').forEach(el => { if (!el.classList.contains('in')) observer.observe(el); });
 }
 
 /* ════════════════════════════════
@@ -1559,48 +1690,139 @@ function countUp(el) {
 ════════════════════════════════ */
 const tests = [
   { q: '"Rosy didn\'t just officiate our ceremony — she told our story. Every guest cried, laughed, and felt exactly what we felt. It was perfect."', a: 'Sarah & James', c: 'United Kingdom · Villa Cetinale, Siena' },
-  { q: '"We were worried a ceremony in a foreign country would feel impersonal. Rosy made it feel like she had known us forever. The most beautiful words we\'ve ever heard."', a: 'Alejandra & Martin', c: 'Mexico · Chianti Hills, Tuscany' },
-  { q: '"From our very first call, we knew Rosy was the one. She understood exactly what we wanted — something real, something ours. We wouldn\'t change a single word."', a: 'Justin & Philip', c: 'United Kingdom · Florence, Tuscany' },
+  { q: '"We were worried a ceremony in a foreign country would feel impersonal. Rosy made it feel like she had known us forever. The most beautiful words we\'ve ever heard."', a: 'Alejandra & Martin', c: 'Mexico · Florence, Tuscany' },
+  { q: '"From our very first call, we knew Rosy was the one. She understood exactly what we wanted — something real, something ours. We wouldn\'t change a single word."', a: 'Justin & Philip', c: 'United Kingdom · Italian Riviera' },
 ];
-let ti = 0;
+let ti = 0, testTimer;
 function setTest(i) {
-  ti = i;
-  const q = document.getElementById('tq');
-  q.style.opacity = 0;
-  setTimeout(() => {
-    q.textContent = tests[i].q;
-    document.getElementById('ta').textContent = tests[i].a;
-    document.getElementById('tc').textContent = tests[i].c;
-    q.style.transition = 'opacity .5s';
-    q.style.opacity = 1;
-  }, 350);
-  document.querySelectorAll('.test-dot').forEach((d, idx) => d.classList.toggle('active', idx === i));
+  ti = i; const q = document.getElementById('tq'); q.style.opacity = 0;
+  setTimeout(() => { q.textContent = tests[i].q; document.getElementById('ta').textContent = tests[i].a; document.getElementById('tc').textContent = tests[i].c; q.style.transition = 'opacity .5s'; q.style.opacity = 1; }, 350);
+  document.querySelectorAll('.test-dot').forEach((d, k) => d.classList.toggle('active', k === i));
   resetTestTimer();
 }
-let testTimer;
 function resetTestTimer() { clearInterval(testTimer); testTimer = setInterval(() => setTest((ti + 1) % tests.length), 6000); }
 resetTestTimer();
-/* swipe on testimonials */
-(function () {
-  const box = document.getElementById('testimonial'); if (!box) return;
-  let sx = 0, sy = 0;
-  box.addEventListener('touchstart', e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY }, { passive: true });
-  box.addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
-    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) setTest((ti + (dx < 0 ? 1 : tests.length - 1)) % tests.length);
-  }, { passive: true });
-})();
-document.addEventListener('keydown', e => { if (e.key === 'Escape' && menuOpen) closeMenu() });
-/* re-evaluate parallax on resize / rotation */
-let rzT; window.addEventListener('resize', () => { clearTimeout(rzT); rzT = setTimeout(() => { registerParallax(); if (!parallaxTargets.length) document.querySelectorAll('#hero-bg,.ph-bg,.gal-inner,.about-img-wrap').forEach(el => el.style.transform = ''); }, 200) });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { if (menuOpen) closeMenu(); lbClose(); }
+  if (document.getElementById('lb').classList.contains('open')) { if (e.key === 'ArrowRight') lbStep(1); if (e.key === 'ArrowLeft') lbStep(-1); }
+});
+let rzT; window.addEventListener('resize', () => { clearTimeout(rzT); rzT = setTimeout(() => { registerParallax(); if (!parallaxTargets.length) document.querySelectorAll('#hero-bg,.ph-bg,.gal-inner,.about-img-wrap').forEach(el => el.style.transform = ''); }, 200); });
 
 /* ════════════════════════════════
-   HOVER on interactive elements — cursor scale
+   INTRO — quadrifoglio → anello → al dito
+   fase A (automatica): le 4 foglie si uniscono e diventano un anello
+   fase B (scroll):     la mano sale, l'anello si infila all'anulare, il sito si apre dall'anello
 ════════════════════════════════ */
-document.addEventListener('mouseover', e => {
-  const isLink = e.target.closest('a, button, [onclick], .cel-item, .serv-item, .wa-fab, .dp-item, .party-item, .cfc-item, .burger');
-  document.body.classList.toggle('cursor-hover', !!isLink);
-});
+const intro = document.getElementById('intro');
+const $ = id => document.getElementById(id);
+const cls = [...document.querySelectorAll('#clover .cl')];
+const CX = 500, CY = 600;
+const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+const clamp01 = t => Math.max(0, Math.min(1, t));
+const seg = (p, a, b) => clamp01((p - a) / (b - a));
+const lerp = (a, b, t) => a + (b - a) * t;
+const mixHex = (a, b, t) => { const pa = a.match(/\w\w/g).map(h => parseInt(h, 16)), pb = b.match(/\w\w/g).map(h => parseInt(h, 16)); return '#' + pa.map((v, i) => Math.round(lerp(v, pb[i], t)).toString(16).padStart(2, '0')).join(''); };
+const HAND_ROT = -12, RING_LOCAL = { x: 450, y: 655 };
+function handPoint(rise) { // anulare in coordinate SVG, con la mano ruotata e traslata
+  const a = HAND_ROT * Math.PI / 180, dx = RING_LOCAL.x - 500, dy = RING_LOCAL.y - 1000;
+  return { x: 500 + dx * Math.cos(a) - dy * Math.sin(a), y: 1000 + dx * Math.sin(a) + dy * Math.cos(a) + rise };
+}
+function ringShape(cx, cy, rx, ry, rot, sw, gemS, gemY) {
+  $('ringG').setAttribute('transform', `translate(${cx} ${cy}) rotate(${rot})`);
+  const back = `M ${-rx} 0 A ${rx} ${ry} 0 0 1 ${rx} 0`, front = `M ${rx} 0 A ${rx} ${ry} 0 0 1 ${-rx} 0`;
+  $('rbHigh').setAttribute('d', back); $('rf').setAttribute('d', front);
+  ['rbHigh', 'rf'].forEach(id => $(id).setAttribute('stroke-width', sw));
+  $('rbLow').setAttribute('d', back); $('rbLow').setAttribute('stroke-width', sw);
+  $('ringLow').setAttribute('transform', `translate(${cx} ${cy}) rotate(${rot})`);
+  $('gem').setAttribute('transform', `translate(0 ${gemY}) scale(${gemS})`);
+}
+let A = 0, S = 0, sTarget = 0, introDone = false, introActive = false, lastInput = 0;
+function drawIntro() {
+  // ── fase A: quadrifoglio → anello
+  const a1 = ease(seg(A, 0, .5)), a2 = ease(seg(A, .45, 1));
+  const off = 37 * (1 - a1);
+  [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(([sx, sy], i) => { cls[i].setAttribute('cx', CX + sx * off); cls[i].setAttribute('cy', CY + sy * off); cls[i].setAttribute('r', 38 * (1 - a2 * .999)); });
+  $('cStem').style.opacity = 1 - a1;
+  const col = mixHex('A9C77F', 'C9A882', a2);
+  cls.forEach(c => c.setAttribute('fill', col));
+  $('cOuter').setAttribute('cx', CX); $('cOuter').setAttribute('cy', CY); $('cOuter').setAttribute('fill', col);
+  $('cOuter').setAttribute('r', a1 >= 1 ? lerp(38, 60, a2) : 0);
+  $('cInner').setAttribute('cx', CX); $('cInner').setAttribute('cy', CY); $('cInner').setAttribute('r', lerp(0, 52, a2));
+  const ringOn = A >= 1;
+  $('clover').style.display = ringOn ? 'none' : '';
+  $('ringG').style.display = ringOn ? '' : 'none';
+
+  // ── fase B: la mano sale, l'anello vola all'anulare
+  const t1 = ease(seg(S, 0, .72));
+  const rise = lerp(620, 0, ease(seg(S, 0, .6)));
+  $('handWrap').setAttribute('transform', `translate(0 ${rise})`);
+  $('handWrap').style.opacity = seg(S, 0, .08);
+  const P = handPoint(rise);
+  const cx = lerp(CX, P.x, t1), cy = lerp(CY, P.y, t1);
+  const rx = lerp(56, 27, t1), ry = lerp(56, 8.5, ease(seg(S, .15, .72)));
+  const sw = lerp(8, 5.5, t1), rot = lerp(0, HAND_ROT, t1);
+  const settle = seg(S, .72, .8);                       // l'anello scivola giù di qualche pixel sul dito
+  const sy2 = cy + Math.sin(settle * Math.PI) * -10 + settle * 6;
+  ringShape(cx, sy2, rx, ry, rot, sw, lerp(1, .42, t1), lerp(-56, ry, t1));
+  const behind = S > .74;                              // metà posteriore dietro al dito
+  $('ringLow').style.display = behind ? '' : 'none';
+  $('rbHigh').style.display = behind ? 'none' : '';
+  $('intro-words').classList.toggle('on', S > .55 && S < .9);
+  $('intro-hint').style.opacity = ringOn && S < .1 ? 1 : 0;
+
+  // ── apertura: il sito si apre dall'anello
+  const o = ease(seg(S, .84, 1));
+  if (o > 0) {
+    const r = $('ringG').getBoundingClientRect();
+    intro.style.setProperty('--hx', (r.left + r.width / 2) + 'px');
+    intro.style.setProperty('--hy', (r.top + r.height / 2) + 'px');
+    intro.style.setProperty('--hr', (o * Math.hypot(innerWidth, innerHeight) * 1.05) + 'px');
+  } else intro.style.setProperty('--hr', '0px');
+  if (S >= .999) introFinish();
+}
+function introLoop() {
+  if (introDone) return;
+  S += (sTarget - S) * .085;
+  if (Math.abs(sTarget - S) < .0005) S = sTarget;
+  if (A >= 1 && sTarget < 1 && performance.now() - lastInput > 9000) sTarget = Math.min(1, sTarget + .004); // auto-avanzamento se nessuno scrolla
+  drawIntro();
+  requestAnimationFrame(introLoop);
+}
+function nudge(d) { if (A < 1) return; lastInput = performance.now(); sTarget = clamp01(sTarget + d); if (sTarget > .86) sTarget = 1; }
+function introFinish(skip) {
+  if (introDone) return; introDone = true;
+  if (skip) { intro.style.transition = 'opacity .6s'; intro.style.opacity = 0; }
+  setTimeout(() => { intro.classList.add('done'); }, skip ? 600 : 0);
+  document.documentElement.style.overflow = '';
+  ['wheel', 'touchstart', 'touchmove', 'keydown'].forEach(ev => window.removeEventListener(ev, introHandlers[ev], { passive: false }));
+  document.querySelectorAll('#hero .line-wrap').forEach(el => el.classList.add('in'));
+}
+let tY = 0;
+const introHandlers = {
+  wheel: e => { e.preventDefault(); nudge(Math.sign(e.deltaY) * Math.min(Math.abs(e.deltaY), 120) / 900); },
+  touchstart: e => { tY = e.touches[0].clientY; },
+  touchmove: e => { e.preventDefault(); const y = e.touches[0].clientY; nudge((tY - y) / (innerHeight * .9)); tY = y; },
+  keydown: e => { if (['ArrowDown', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); nudge(.25); } if (e.key === 'ArrowUp') nudge(-.25); },
+};
+function startIntro() {
+  const isHome = !location.hash.replace(/^#\/?/, '');
+  if (reduceMotion || !isHome) { intro.classList.add('done'); introDone = true; document.querySelectorAll('#hero .line-wrap').forEach(el => el.classList.add('in')); return; }
+  introActive = true; document.documentElement.style.overflow = 'hidden';
+  Object.entries(introHandlers).forEach(([ev, fn]) => window.addEventListener(ev, fn, { passive: false }));
+  const t0 = performance.now() + 500, dur = 1900;
+  lastInput = performance.now();
+  (function phaseA(now) { A = clamp01((now - t0) / dur); if (A >= 1) lastInput = performance.now(); if (A < 1) requestAnimationFrame(phaseA); })(performance.now());
+  introLoop();
+}
+window.__intro = (a, s) => { A = a; S = sTarget = s; drawIntro(); }; // per test
+
+/* ════════════════════════════════
+   AVVIO
+════════════════════════════════ */
+renderStatic();
+document.getElementById('subpages').style.display = 'none';
+route();
+startIntro();
 </script>
 </body>
 </html>
