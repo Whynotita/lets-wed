@@ -313,7 +313,7 @@ a { text-decoration: none; color: inherit }
 }
 .about-img-wrap img {
   width: 100%; height: 100%; object-fit: cover;
-  object-position: top center;
+  object-position: center 30%;
 }
 .about-copy-col {
   padding: 96px 80px; display: flex; flex-direction: column; justify-content: center;
@@ -652,7 +652,7 @@ footer {
   display: flex; align-items: flex-end;
 }
 .subpage-hero .ph-bg {
-  position: absolute; inset: -20% 0; width: 100%; height: 140%;
+  position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover; will-change: transform;
 }
 .subpage-hero .ph-veil { position: absolute; inset: 0; background: rgba(13,12,11,.4) }
@@ -1378,11 +1378,11 @@ const CEREMONIES = [
     lead:'Paper poppies, sea breeze and a promise.',
     text:['Guests arrived by boat, serenaded by musicians on deck. The ceremony was held on a terrace above the sea, framed by oversized paper flowers and a riot of summer blooms.',
           'Rosy wrote a ceremony full of laughter and tears, closed by a shower of confetti and a dinner under the bougainvillea.'] },
-  { slug:'lucy-kevin', n:19, name:'Lucy & Kevin', place:"Val d'Orcia", type:'Symbolic ceremony', cover:'split',
+  { slug:'lucy-kevin', n:21, name:'Lucy & Kevin', place:"Val d'Orcia", type:'Symbolic ceremony', cover:'split',
     lead:'Lavender, delphiniums and endless hills.',
     text:["A castle on the hills of the Val d'Orcia, an aisle lined with lilac delphiniums and a view that went on forever. Lucy and Kevin said their vows under a floral arch that seemed to grow out of the landscape.",
           'Dinner under chandeliers hung from the olive trees, then a first dance in the castle cellars bathed in violet light.'] },
-  { slug:'hanna-rory', n:17, name:'Hanna & Rory', place:'Tuscany', type:'Symbolic ceremony', cover:'split',
+  { slug:'hanna-rory', n:21, name:'Hanna & Rory', place:'Tuscany', type:'Symbolic ceremony', cover:'split',
     lead:'A Vespa, a cedar tree and a lot of joy.',
     text:['A garden ceremony at the foot of a centuries-old cedar wrapped in roses. The groom waited, the bride arrived on a vintage Vespa, and everybody cried before the first word was spoken.',
           'Lemon centrepieces, wild herbs and candles: simple, generous, deeply Tuscan — just like them.'] },
@@ -1390,11 +1390,11 @@ const CEREMONIES = [
     lead:'Sage silk, old-rose blooms and a yellow villa.',
     text:['Bridesmaids in sage silk, a veil shared between sisters and a ceremony on the lawn overlooking the Tuscan hills. Every detail — from the welcome sign to the menus — was designed for them.',
           'At sunset the long table ran through the Italian garden, dressed in deep roses and greenery, until the party moved inside.'] },
-  { slug:'mark-alex', n:17, name:'Mark & Alex', place:'Medici villa · Tuscany', type:'Symbolic ceremony', cover:'07',
+  { slug:'mark-alex', n:21, name:'Mark & Alex', place:'Medici villa · Tuscany', type:'Symbolic ceremony', cover:'07',
     lead:'A red door, a Medici villa and two dogs as witnesses.',
     text:['The ceremony took place in front of the villa\'s great red door, crowned with burgundy and blush flowers, with their two dogs among the guests of honour.',
           'Then golden hour on the terraces, round tables on the lawn under a canopy of lights and a villa glowing in the night.'] },
-  { slug:'brooke-william', n:13, name:'Brooke & William', place:'Tuscany', type:'Wedding celebration', cover:'split',
+  { slug:'brooke-william', n:21, name:'Brooke & William', place:'Tuscany', type:'Wedding celebration', cover:'split',
     lead:'White hydrangeas, a cypress avenue and a sky full of fireworks.',
     text:['A slow morning in a sun-washed Tuscan farmhouse, bridesmaids in black silk and groomsmen lined up along the old stone staircase. Then a ceremony among white hydrangeas, with the hills rolling away behind them.',
           'Dinner ran down a cypress avenue under crystal chandeliers, and the night ended with a tower of tiramisù, a wedding cake and fireworks over the countryside.'] },
@@ -1428,8 +1428,10 @@ const FOLLOW = `<div class="follow-strip"><div class="fs-label">Follow our celeb
 const FOOTER = `<footer><div class="footer-grid"><div class="f-brand"><div class="f-logo"><img src="logo.png" alt="Let's Wed"></div><p>Bespoke wedding ceremonies in Tuscany and beyond. Rosy and Charlotte craft ceremonies as unique as the couples they serve.</p><div class="f-soc"><a href="#">Instagram</a><a href="${WEZOREE}" target="_blank">Wezoree</a></div></div><div class="f-nav"><h4>Navigate</h4><ul><li><a href="#/">Home</a></li><li><a href="#/celebrate">Let's Celebrate</a></li><li><a href="#/design">Let's Design</a></li><li><a href="#/party">Let's Party</a></li><li><a href="#/services">Services</a></li><li><a href="#/about">About</a></li></ul></div><div class="f-form"><h4>Write to us</h4><form onsubmit="return sendForm(this)"><div class="f-form-row"><div class="ff"><label>Name</label><input name="name" type="text" placeholder="Your name" required></div><div class="ff"><label>Email</label><input name="email" type="email" placeholder="your@email.com" required></div></div><div class="ff"><label>Ceremony date</label><input name="date" type="text" placeholder="June 2027"></div><div class="ff"><label>Message</label><textarea name="message" placeholder="Tell us your story…"></textarea></div><button class="f-submit">Send →</button></form></div></div><div class="f-bot"><span>© ${new Date().getFullYear()} Let's Wed · All rights reserved</span><span>Tuscany, Italy</span></div></footer>`;
 const END = FOLLOW + FOOTER;
 
+const HERO_FOCUS = { 'about': '50% 25%', 'alejandra-martin': '50% 0%', 'pizza': '50% 30%', 'mcintyre-colton': '50% 40%', 'lucy-kevin': '50% 30%', 'hanna-rory': '50% 45%', 'mark-alex': '50% 45%', 'brooke-william': '50% 30%' };
 function hero(img, label, title, back) {
-  return `<div class="subpage-hero"><img class="ph-bg" src="${img}" decoding="async" alt=""><div class="ph-veil"></div><div class="ph-copy">${back ? `<a class="ph-back" href="${back[0]}">← ${back[1]}</a><br>` : ''}<span class="label" style="color:rgba(255,255,255,.55)">${label}</span><h1>${title}</h1></div></div><div class="hero-gap"></div>`;
+  const fp = HERO_FOCUS[(img.match(/img\/([^/]+)\//) || [])[1]] || '50% 50%';
+  return `<div class="subpage-hero"><img class="ph-bg" src="${img}" style="object-position:${fp}" decoding="async" alt=""><div class="ph-veil"></div><div class="ph-copy">${back ? `<a class="ph-back" href="${back[0]}">← ${back[1]}</a><br>` : ''}<span class="label" style="color:rgba(255,255,255,.55)">${label}</span><h1>${title}</h1></div></div><div class="hero-gap"></div>`;
 }
 function meetForm(context, id) {
   return `<section class="meet" id="${id || 'meet'}">
