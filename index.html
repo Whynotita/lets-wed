@@ -1157,7 +1157,7 @@ a.cel-item { display: block }
       <g clip-path="url(#iqW2)"><g id="iW2" style="opacity:0"><image href="logo.png" width="407" height="208" clip-path="url(#iqW2)"/></g></g>
     </svg>
     <i class="i-rule"></i>
-    <span class="i-tag">Wedding Celebrant · Tuscany</span>
+    <span class="i-tag">Wedding Planner · Tuscany</span>
   </div>
   <i class="i-edge"></i><i class="i-bar" id="iBar"></i>
 </div>
@@ -1244,13 +1244,6 @@ a.cel-item { display: block }
     </div>
   </section>
 
-  <section id="statement">
-    <div class="st-inner">
-      <span class="st-mark">"</span>
-      <div class="line-wrap"><blockquote class="line-inner">A ceremony is not something you attend — it is something you live. Every word, every pause, every breath belongs to you.</blockquote></div>
-      <span class="st-attr fade-up">— Rosy, Let's Wed</span>
-    </div>
-  </section>
 
   <section id="celebrate" style="padding:96px 64px">
     <div class="cel-header">
@@ -1277,19 +1270,24 @@ a.cel-item { display: block }
         <div class="cel-meta"><span class="cel-couple">Justin &amp; Philip</span><div class="cel-type">Italian Riviera · Symbolic ceremony</div><div class="cel-arrow">Read their story →</div></div>
       </a>
       <a class="cel-item img-reveal" href="#/celebrate/lucy-kevin" style="transition-delay:.24s">
-        <img src="p07-1200.jpg" decoding="async" loading="lazy" alt="">
+        <img src="img/lucy-kevin/split.jpg" decoding="async" loading="lazy" alt="">
         <div class="cel-veil"></div>
         <div class="cel-meta"><span class="cel-couple">Lucy &amp; Kevin</span><div class="cel-type">Val d'Orcia · Symbolic ceremony</div><div class="cel-arrow">Read their story →</div></div>
+      </a>
+      <a class="cel-item img-reveal" href="#/celebrate/hanna-rory" style="transition-delay:.3s">
+        <img src="img/hanna-rory/13-l.jpg" decoding="async" loading="lazy" alt="">
+        <div class="cel-veil"></div>
+        <div class="cel-meta"><span class="cel-couple">Hannah &amp; Rory</span><div class="cel-type">Tuscany · Symbolic ceremony</div><div class="cel-arrow">Read their story →</div></div>
       </a>
     </div>
     <div class="cel-footer"><a class="btn-outline" href="#/celebrate">Let's discover more celebrations &ensp;→</a></div>
   </section>
 
   <div id="gallery">
-    <div class="gal-item"><div class="gal-inner" data-gal-parallax><img src="p08-1200.jpg" decoding="async" loading="lazy" alt=""></div></div>
+    <div class="gal-item"><div class="gal-inner" data-gal-parallax><img src="img/julianna-tim/16-l.jpg" decoding="async" loading="lazy" alt=""></div></div>
     <div class="gal-item"><div class="gal-inner" data-gal-parallax><img src="p09-1200.jpg" decoding="async" loading="lazy" alt=""></div></div>
-    <div class="gal-item"><div class="gal-inner" data-gal-parallax><img src="p10-1200.jpg" decoding="async" loading="lazy" alt=""></div></div>
-    <div class="gal-item"><div class="gal-inner" data-gal-parallax><img src="p11-1200.jpg" decoding="async" loading="lazy" alt=""></div></div>
+    <div class="gal-item"><div class="gal-inner" data-gal-parallax><img src="img/lucy-kevin/13-l.jpg" decoding="async" loading="lazy" alt=""></div></div>
+    <div class="gal-item"><div class="gal-inner" data-gal-parallax><img src="img/mark-alex/20-l.jpg" decoding="async" loading="lazy" alt=""></div></div>
   </div>
 
   <section id="services">
@@ -1370,7 +1368,7 @@ const CEREMONIES = [
     lead:'Black tie among the cypresses.',
     text:['An all-white ceremony on the rolling hills outside Siena: a cathedral veil, a string quartet by the pool and a long imperial table under crystal chandeliers hung between the cypresses.',
           'Every word of their ceremony was written around the way they met and the promises they had already been keeping for years — the hills did the rest.'] },
-  { slug:'alejandra-martin', n:20, name:'Alejandra & Martin', place:'Florence · Tuscany', type:'Wedding celebration', cover:'split',
+  { slug:'alejandra-martin', n:21, name:'Alejandra & Martin', place:'Florence · Tuscany', type:'Wedding celebration', cover:'split',
     lead:'From a Florentine church to a villa above the city.',
     text:['A morning of quiet preparations, a Renaissance church filled with wild greenery and a vintage roadster waiting outside. Then up to the hills, where a pergola of woven lanterns framed the long tables at sunset.',
           'A celebration in two acts — intimate and grand at the same time — held together by family, music and the light of Florence.'] },
@@ -1382,7 +1380,7 @@ const CEREMONIES = [
     lead:'Lavender, delphiniums and endless hills.',
     text:["A castle on the hills of the Val d'Orcia, an aisle lined with lilac delphiniums and a view that went on forever. Lucy and Kevin said their vows under a floral arch that seemed to grow out of the landscape.",
           'Dinner under chandeliers hung from the olive trees, then a first dance in the castle cellars bathed in violet light.'] },
-  { slug:'hanna-rory', n:21, name:'Hanna & Rory', place:'Tuscany', type:'Symbolic ceremony', cover:'split',
+  { slug:'hanna-rory', n:21, name:'Hannah & Rory', place:'Tuscany', type:'Symbolic ceremony', cover:'split',
     lead:'A Vespa, a cedar tree and a lot of joy.',
     text:['A garden ceremony at the foot of a centuries-old cedar wrapped in roses. The groom waited, the bride arrived on a vintage Vespa, and everybody cried before the first word was spoken.',
           'Lemon centrepieces, wild herbs and candles: simple, generous, deeply Tuscan — just like them.'] },
@@ -1510,7 +1508,7 @@ function renderStatic() {
     `<div class="page-end"></div>` + meetForm('', 'meet-about') + END;
 
   document.getElementById('sp-celebrate').innerHTML =
-    hero('img/alejandra-martin/hero-1920.jpg', 'Every love is a world', "Let's Celebrate") +
+    hero('img/brooke-william/table-1920.jpg', 'Every love is a world', "Let's Celebrate") +
     `<div class="sec-head"><span class="label">Real celebrations</span><h2>Eight love stories,<br>eight different worlds.</h2></div>` +
     `<div class="cel-index">${CEREMONIES.map(c => celItem('#/celebrate/' + c.slug, coverOf(c), c.name, c.place + ' · ' + c.type.replace(' ceremony', ''))).join('')}
       <div class="more-tile"><span class="label" style="color:var(--warm);margin:0">And many more</span><div class="h-serif">Let's discover more<br>celebrations together</div><p>Over 180 ceremonies officiated across Tuscany and beyond.</p><a class="btn-outline" href="${WEZOREE}" target="_blank">Wezoree →</a></div>
