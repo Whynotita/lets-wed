@@ -1402,7 +1402,7 @@ const PARTIES = [
     lead:'Long lunches with Florence at your feet.',
     text:['A garden above the city, a swing band among the olive trees, a Vespa and an Ape bar, wooden stools in the meadow and a view of the Duomo from every table.',
           'We take care of the mood, the details and the flow of the day — so you only have to enjoy it with the people you love.'] },
-  { slug:'pizza', name:'Pizza Party', place:'Tuscan borgo', type:'Convivial · Italian · Warm', cover:'10',
+  { slug:'pizza', name:'Pizza Party', place:'Tuscan borgo', type:'Convivial · Italian · Warm', cover:'08',
     lead:'The night before: wood-fired, under the lights.',
     text:['A medieval borgo, baskets of tomatoes at the entrance, a pizzaiolo at the oven and a gelato cart under a striped awning. The perfect welcome dinner for your guests the night before the wedding.',
           'String lights, long tables and Tuscan sunset: informal, generous, unforgettable.'] },
@@ -1523,7 +1523,7 @@ function renderStatic() {
      <div class="page-end"></div>` + meetForm('our design work', 'meet-design') + END;
 
   document.getElementById('sp-party').innerHTML =
-    hero('img/pizza/hero-1920.jpg', 'Events &amp; Celebrations', "Let's Party") +
+    hero('img/party/hero-1920.jpg', 'Events &amp; Celebrations', "Let's Party") +
     `<div class="sec-head"><span class="label">Beyond the wedding day</span><h2>Every moment deserves<br>to be celebrated.</h2></div>
      <div class="party-tiles">${PARTIES.map(p => celItem('#/party/' + p.slug, coverOf(p), p.name, p.type, 'See the gallery →')).join('')}</div>
      <div class="page-end"></div>` + END;
